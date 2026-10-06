@@ -3,9 +3,9 @@
 Source for Alia's personal data and analytics portfolio at [aliaaziz.work](https://aliaaziz.work).
 
 ## Homepage on this branch
-A minimal, responsive static page with an introduction, qualifications and tools line, three selected project cards, a link to more GitHub repositories, and email/LinkedIn contact links.
+A minimal, responsive static page with an introduction, qualifications and tools line, three selected project cards, an expandable Other projects section, and email/LinkedIn contact links.
 
-Selected work links to TikTok classification, Nashville housing SQL cleaning, and Tableau dashboards. Databricks, dbt, and R are listed as skills; the selected cards do not demonstrate projects using all of them.
+Selected work links to TikTok classification, Nashville housing SQL cleaning, and Tableau dashboards. Other projects summarises movie EDA, the Excel bike-sales dashboard, COVID-19 SQL, and the TCD scraper on the homepage. Visitors can open the Excel workbook directly; source-code links lead to the relevant GitHub repositories. The credential line includes Imperial College London, and the hero links to LinkedIn for professional background. Databricks, dbt, and R are listed as skills; the selected cards do not demonstrate projects using all of them.
 
 ## Preview and deployment
 There is no build step or JavaScript dependency for the redesigned homepage. Download this branch and open index.html locally, or serve the repository with a static-file server. The name link points to /, so use a server for root navigation.
