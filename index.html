@@ -47,12 +47,12 @@
     .project.featured { border-color: var(--accent); }
     .project.featured .project-content { background: #f5faf8; }
     .other-projects { margin-top: 36px; }
-    .other-projects summary { display: flex; align-items: center; justify-content: space-between; cursor: pointer; padding: 16px 0; list-style: none; }
+    .other-projects summary { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; padding: 16px 0; list-style: none; color: var(--accent); }
     .other-projects summary::-webkit-details-marker { display: none; }
-    .other-projects summary::after { content: "+"; font-size: 1.4rem; font-weight: 400; color: var(--muted); }
+    .other-projects summary::after { content: "+"; font-size: 1.2rem; line-height: 1; font-weight: 400; }
     .other-projects[open] summary::after { content: "−"; }
-    .other-projects summary strong { font-size: 1rem; font-weight: 600; }
-    .other-projects summary:hover { color: var(--accent); }
+    .other-projects summary strong { font-size: 1rem; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    .other-projects summary:hover { color: var(--ink); }
     .other-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; padding: 8px 0 0; }
     .other-grid article { border-top: 1px solid var(--line); padding-top: 20px; }
     .other-grid p { font-size: .93rem; color: var(--muted); }
