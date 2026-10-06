@@ -1,161 +1,135 @@
-<!DOCTYPE HTML>
-<!-- Portfolio site based on the Massively template by HTML5 UP (CCA 3.0). -->
+<!doctype html>
 <html lang="en">
-	<head>
-		<title>Alia Abdul Aziz | Data &amp; Analytics</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="description" content="Alia Abdul Aziz is a Singapore-based data and analytics professional specialising in SQL, Python, analytics engineering, Tableau, and data products." />
-		<meta property="og:title" content="Alia Abdul Aziz | Data &amp; Analytics" />
-		<meta property="og:description" content="Selected analytics, SQL, Python, Tableau, and Excel projects by Alia Abdul Aziz." />
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://aliaaziz.work/" />
-		<meta property="og:image" content="https://aliaaziz.work/images/tiktok.jpeg" />
-		<meta name="twitter:card" content="summary_large_image" />
-		<link rel="canonical" href="https://aliaaziz.work/" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
-		<div id="wrapper" class="fade-in">
-			<div id="intro">
-				<h1>Alia Abdul Aziz</h1>
-				<p>
-					<strong>Data &amp; Analytics Professional</strong><br />
-					I turn operational data into reliable analysis, practical models, and decisions teams can act on.<br />
-					<strong>MSc Applied Mathematics | SQL | Python | Databricks | dbt | Tableau | R</strong>
-				</p>
-				<ul class="actions">
-					<li><a href="#selected-work" class="button primary scrolly">View selected work</a></li>
-					<li><a href="mailto:aliabinti.abdulaziz@gmail.com?subject=Let%27s%20talk%20data%20and%20analytics" class="button">Get in touch</a></li>
-				</ul>
-			</div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alia Abdul Aziz | Data &amp; Analytics</title>
+  <meta name="description" content="Portfolio of Alia Abdul Aziz, a data and analytics professional in Singapore.">
+  <meta property="og:title" content="Alia Abdul Aziz | Data &amp; Analytics">
+  <meta property="og:description" content="Selected data, analytics, and dashboard projects.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aliaaziz.work/">
+  <meta property="og:image" content="https://aliaaziz.work/images/tiktok.jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://aliaaziz.work/">
+  <style>
+    :root { --ink: #17212b; --muted: #5d6873; --line: #dde3e8; --surface: #f7f9fa; --accent: #0d6e63; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: #fff; font: 16px/1.6 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    a { color: inherit; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: auto; }
+    nav { height: 76px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+    .name { text-decoration: none; font-size: 1rem; font-weight: 700; letter-spacing: -.02em; }
+    .nav-links { display: flex; gap: 20px; align-items: center; }
+    .nav-links a { color: var(--muted); font-size: .92rem; text-decoration: none; }
+    .hero { max-width: 760px; padding: 105px 0 82px; }
+    .eyebrow { color: var(--accent); font-size: .78rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 720px; margin: 15px 0 20px; font-size: clamp(2.65rem, 7vw, 5.35rem); line-height: 1.02; letter-spacing: -.06em; }
+    .intro { max-width: 630px; color: var(--muted); font-size: 1.15rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .button { display: inline-block; padding: 11px 17px; border: 1px solid var(--ink); border-radius: 5px; font-weight: 650; font-size: .92rem; text-decoration: none; }
+    .button.primary { background: var(--ink); color: white; }
+    .section { padding: 60px 0 84px; border-top: 1px solid var(--line); }
+    .section-heading { display: flex; justify-content: space-between; gap: 20px; align-items: baseline; margin-bottom: 28px; }
+    h2 { margin-bottom: 0; font-size: clamp(1.75rem, 3vw, 2.45rem); letter-spacing: -.045em; }
+    .section-heading p { margin-bottom: 0; color: var(--muted); }
+    .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .project { overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+    .project img { display: block; width: 100%; height: 190px; object-fit: cover; background: var(--surface); }
+    .project-content { padding: 22px; }
+    .tag { color: var(--accent); font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    h3 { margin: 8px 0 10px; font-size: 1.2rem; line-height: 1.25; letter-spacing: -.025em; }
+    .project p { color: var(--muted); font-size: .93rem; }
+    .project a { font-size: .92rem; font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    footer { padding: 34px 0 50px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+    .footer-content { display: flex; justify-content: space-between; gap: 24px; }
+    .footer-links { display: flex; gap: 18px; }
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 32px, 1120px); }
+      nav { height: 66px; }
+      .nav-links { gap: 14px; }
+      .hero { padding: 76px 0 62px; }
+      .projects { grid-template-columns: 1fr; }
+      .project img { height: 220px; }
+      .section-heading, .footer-content { display: block; }
+      .section-heading p { margin-top: 8px; }
+      .footer-links { margin-top: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav aria-label="Main navigation">
+      <a class="name" href="/">Alia Abdul Aziz</a>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="https://www.linkedin.com/in/aliaabdulaziz/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:aliabinti.abdulaziz@gmail.com">Email</a>
+      </div>
+    </nav>
 
-			<header id="header">
-				<a href="index.html" class="logo">Alia Abdul Aziz</a>
-			</header>
+    <main>
+      <section class="hero">
+        <div class="eyebrow">Data &amp; Analytics</div>
+        <h1>Clear analysis for better decisions.</h1>
+        <p class="intro">I’m Alia Abdul Aziz, a Singapore-based data and analytics professional. I use SQL, Python, dashboards, and analytics engineering to turn complex data into useful, trustworthy answers.</p>
+        <div class="actions">
+          <a class="button primary" href="#work">View selected work</a>
+          <a class="button" href="mailto:aliabinti.abdulaziz@gmail.com?subject=Let%27s%20talk%20data%20and%20analytics">Get in touch</a>
+        </div>
+      </section>
 
-			<nav id="nav" aria-label="Primary navigation">
-				<ul class="links">
-					<li class="active"><a href="#selected-work">Selected work</a></li>
-					<li><a href="https://www.linkedin.com/in/aliaabdulaziz/" target="_blank" rel="noopener">LinkedIn</a></li>
-				</ul>
-				<ul class="icons">
-					<li><a href="https://www.linkedin.com/in/aliaabdulaziz/" target="_blank" rel="noopener" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
-					<li><a href="https://github.com/AliaAbdulAziz" target="_blank" rel="noopener" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-				</ul>
-			</nav>
+      <section class="section" id="work" aria-labelledby="work-heading">
+        <div class="section-heading">
+          <h2 id="work-heading">Selected work</h2>
+          <p>Projects across analytics, machine learning, and dashboards.</p>
+        </div>
+        <div class="projects">
+          <article class="project">
+            <img src="images/tiktok.jpeg" alt="TikTok logo representing the video classification project">
+            <div class="project-content">
+              <div class="tag">Machine learning</div>
+              <h3>Classifying TikTok videos</h3>
+              <p>Used statsmodels and scikit-learn to help distinguish claim-based from opinion-based videos for a more focused human-review workflow.</p>
+              <a href="https://github.com/AliaAbdulAziz/TikTokClassification" target="_blank" rel="noopener">View project</a>
+            </div>
+          </article>
 
-			<div id="main">
-				<article class="post featured" id="selected-work">
-					<header class="major">
-						<span class="date">Featured project · Machine learning</span>
-						<h2>Classifying TikTok videos<br />for human review</h2>
-						<p>Built an end-to-end analysis using statsmodels and scikit-learn to distinguish claim-based from opinion-based videos—helping define a more targeted triage process for human reviewers.</p>
-					</header>
-					<img style="width:100%;" src="images/tiktok.jpeg" alt="TikTok logo representing the video-classification project" />
-					<ul class="actions special">
-						<li><a href="https://github.com/AliaAbdulAziz/TikTokClassification" target="_blank" rel="noopener" class="button large">Read the project</a></li>
-					</ul>
-				</article>
+          <article class="project">
+            <img src="images/Singapore-Public-Housing.jpg" alt="High-rise housing buildings representing the data-cleaning project">
+            <div class="project-content">
+              <div class="tag">SQL · Data quality</div>
+              <h3>Cleaning housing data</h3>
+              <p>Transformed raw housing records in SQL Server into a more consistent, analysis-ready dataset.</p>
+              <a href="https://github.com/AliaAbdulAziz/Nashville-Housing-SQL" target="_blank" rel="noopener">View project</a>
+            </div>
+          </article>
 
-				<section class="posts" aria-label="More selected projects">
-					<article>
-						<header>
-							<span class="date">SQL · Data quality</span>
-							<h2>Cleaning Nashville housing data</h2>
-						</header>
-						<img style="width:100%;" src="images/Singapore-Public-Housing.jpg" alt="High-rise public housing buildings representing the housing-data cleaning project" />
-						<p>Transformed raw housing records in SQL Server into a more consistent, analysis-ready dataset by standardising fields and resolving common data-quality issues.</p>
-						<ul class="actions special">
-							<li><a href="https://github.com/AliaAbdulAziz/Nashville-Housing-SQL" target="_blank" rel="noopener" class="button">View SQL project</a></li>
-						</ul>
-					</article>
+          <article class="project">
+            <img src="images/tableau.png" alt="Tableau logo representing interactive dashboard projects">
+            <div class="project-content">
+              <div class="tag">Tableau · Dashboards</div>
+              <h3>Interactive dashboards</h3>
+              <p>A collection of visual tools designed to make performance and trend questions easier to explore.</p>
+              <a href="https://public.tableau.com/app/profile/hungry.alia/vizzes" target="_blank" rel="noopener">Explore dashboards</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
 
-					<article>
-						<header>
-							<span class="date">Tableau · Data storytelling</span>
-							<h2>Interactive Tableau dashboards</h2>
-						</header>
-						<img style="width:100%;" src="images/tableau.png" alt="Tableau logo representing interactive dashboard projects" />
-						<p>A collection of interactive dashboards designed to make trends, segments, and performance questions easier to explore.</p>
-						<ul class="actions special">
-							<li><a href="https://public.tableau.com/app/profile/hungry.alia/vizzes" target="_blank" rel="noopener" class="button">Explore dashboards</a></li>
-						</ul>
-					</article>
-
-					<article>
-						<header>
-							<span class="date">SQL · Exploratory analysis</span>
-							<h2>Exploring global COVID-19 data</h2>
-						</header>
-						<img style="width:100%;" src="images/covid19.webp" alt="COVID-19 illustration representing the SQL exploration project" />
-						<p>Used SQL Server to explore global cases, deaths, vaccinations, and trends—practising joins, aggregations, window functions, and analysis-ready views.</p>
-						<ul class="actions special">
-							<li><a href="https://github.com/AliaAbdulAziz/covid-project" target="_blank" rel="noopener" class="button">View SQL project</a></li>
-						</ul>
-					</article>
-
-					<article>
-						<header>
-							<span class="date">Python · Exploratory analysis</span>
-							<h2>What drives movie revenue?</h2>
-						</header>
-						<img style="width:100%;" src="images/into-film-plus-catalogue-image-07-22.jpg" alt="Cinema-themed image representing the movie data exploration project" />
-						<p>Cleaned and explored movie data in Python to investigate the relationships among budget, gross earnings, genre, and other film attributes.</p>
-						<ul class="actions special">
-							<li><a href="https://github.com/AliaAbdulAziz/Movie-EDA" target="_blank" rel="noopener" class="button">View Python project</a></li>
-						</ul>
-					</article>
-				</section>
-
-				<article class="post featured">
-					<header class="major">
-						<span class="date">Excel · Dashboarding</span>
-						<h2>Bike sales dashboard</h2>
-						<p>Cleaned and recoded source fields, created age brackets and pivot tables, then built an interactive Excel dashboard for exploring bike-sales patterns.</p>
-					</header>
-					<ul class="actions special">
-						<li><a href="https://github.com/AliaAbdulAziz/Bike-Sales-Dashboard" target="_blank" rel="noopener" class="button large">View dashboard project</a></li>
-					</ul>
-				</article>
-			</div>
-
-			<footer id="footer">
-				<section class="split contact">
-					<section class="alt">
-						<h3>Location</h3>
-						<p>Singapore</p>
-					</section>
-					<section>
-						<h3>Phone</h3>
-						<p><a href="tel:+6588419022">(+65) 8841 9022</a></p>
-					</section>
-					<section>
-						<h3>Email</h3>
-						<p><a href="mailto:aliabinti.abdulaziz@gmail.com">aliabinti.abdulaziz@gmail.com</a></p>
-					</section>
-					<section>
-						<h3>Social</h3>
-						<ul class="icons alt">
-							<li><a href="https://www.linkedin.com/in/aliaabdulaziz/" target="_blank" rel="noopener" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
-							<li><a href="https://github.com/AliaAbdulAziz" target="_blank" rel="noopener" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</section>
-				</section>
-			</footer>
-
-			<div id="copyright">
-				<ul><li>&copy; Alia Abdul Aziz</li><li>Built with <a href="https://html5up.net" target="_blank" rel="noopener">HTML5 UP</a></li></ul>
-			</div>
-		</div>
-
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/jquery.scrolly.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-	</body>
+    <footer>
+      <div class="footer-content">
+        <div>Based in Singapore · Open to data and analytics opportunities.</div>
+        <div class="footer-links">
+          <a href="mailto:aliabinti.abdulaziz@gmail.com">Email</a>
+          <a href="https://www.linkedin.com/in/aliaabdulaziz/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/AliaAbdulAziz" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
 </html>
