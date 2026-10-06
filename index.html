@@ -28,6 +28,7 @@
     h1, h2, h3, p { margin-top: 0; }
     h1 { max-width: 720px; margin: 15px 0 20px; font-size: clamp(2.65rem, 7vw, 5.35rem); line-height: 1.02; letter-spacing: -.06em; }
     .intro { max-width: 630px; color: var(--muted); font-size: 1.15rem; }
+    .credentials { color: var(--muted); font-size: .85rem; margin: 22px 0 0; }
     .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
     .button { display: inline-block; padding: 11px 17px; border: 1px solid var(--ink); border-radius: 5px; font-weight: 650; font-size: .92rem; text-decoration: none; }
     .button.primary { background: var(--ink); color: white; }
@@ -37,6 +38,10 @@
     .section-heading p { margin-bottom: 0; color: var(--muted); }
     .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .project { overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+    .project.featured { border-color: var(--accent); }
+    .project.featured .project-content { background: #f5faf8; }
+    .more-projects { margin: 28px 0 0; font-size: .92rem; }
+    .more-projects a { color: var(--accent); font-weight: 650; text-underline-offset: 4px; }
     .project img { display: block; width: 100%; height: 190px; object-fit: cover; background: var(--surface); }
     .project-content { padding: 22px; }
     .tag { color: var(--accent); font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
@@ -75,6 +80,7 @@
         <div class="eyebrow">Data &amp; Analytics</div>
         <h1>Clear analysis for better decisions.</h1>
         <p class="intro">I’m Alia Abdul Aziz, a Singapore-based data and analytics professional. I use SQL, Python, dashboards, and analytics engineering to turn complex data into useful, trustworthy answers.</p>
+        <p class="credentials">MSc Applied Mathematics · SQL · Python · Databricks · dbt · Tableau · R</p>
         <div class="actions">
           <a class="button primary" href="#work">View selected work</a>
           <a class="button" href="mailto:aliabinti.abdulaziz@gmail.com?subject=Let%27s%20talk%20data%20and%20analytics">Get in touch</a>
@@ -87,10 +93,10 @@
           <p>Projects across analytics, machine learning, and dashboards.</p>
         </div>
         <div class="projects">
-          <article class="project">
+          <article class="project featured">
             <img src="images/tiktok.jpeg" alt="TikTok logo representing the video classification project">
             <div class="project-content">
-              <div class="tag">Machine learning</div>
+              <div class="tag">Featured project · Machine learning</div>
               <h3>Classifying TikTok videos</h3>
               <p>Used statsmodels and scikit-learn to help distinguish claim-based from opinion-based videos for a more focused human-review workflow.</p>
               <a href="https://github.com/AliaAbdulAziz/TikTokClassification" target="_blank" rel="noopener">View project</a>
@@ -117,6 +123,7 @@
             </div>
           </article>
         </div>
+        <p class="more-projects"><a href="https://github.com/aliaabdulaziz?tab=repositories" target="_blank" rel="noopener">More projects on GitHub →</a></p>
       </section>
     </main>
 
