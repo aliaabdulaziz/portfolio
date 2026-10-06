@@ -1,22 +1,22 @@
 # Alia Abdul Aziz — Portfolio
 
-Source for [aliaaziz.work](https://aliaaziz.work), a portfolio showcasing selected data and analytics work.
+Source for Alia's personal data and analytics portfolio at [aliaaziz.work](https://aliaaziz.work).
 
-## Featured areas
+## Homepage on this branch
+A minimal, responsive static page with an introduction, qualifications and tools line, three selected project cards, a link to more GitHub repositories, and email/LinkedIn contact links.
 
-- SQL data cleaning and exploratory analysis
-- Python and machine-learning analysis
-- Tableau and Excel dashboards
-- Analytics engineering tools: Databricks and dbt
+Selected work links to TikTok classification, Nashville housing SQL cleaning, and Tableau dashboards. Databricks, dbt, and R are listed as skills; the selected cards do not demonstrate projects using all of them.
 
-## Local preview
+## Preview and deployment
+There is no build step or JavaScript dependency for the redesigned homepage. Download this branch and open index.html locally, or serve the repository with a static-file server. The name link points to /, so use a server for root navigation.
 
-This is a static site with no build step. Open `index.html` in a browser, or serve the repository with any static-file server.
+The live domain does not preview this branch automatically. The redesign is proposed in [PR #3](https://github.com/aliaabdulaziz/portfolio/pull/3); deployment follows the repository's configured GitHub Pages publishing source.
 
-## Project repositories
+## Files and history
+- index.html contains the redesigned homepage and its CSS.
+- images/ contains project imagery.
+- CNAME records the custom domain.
+- assets/, generic.html, elements.html, README.txt, and LICENSE.txt include legacy HTML5 UP template resources. The redesigned homepage no longer loads the template styles or scripts. Preserve attribution and applicable licences for retained resources.
 
-The portfolio links to individual repositories for the TikTok classification, Nashville housing SQL, COVID-19 SQL, movie EDA, and bike-sales dashboard projects.
-
-## Credits
-
-The visual foundation is based on the [Massively](https://html5up.net/massively) template by HTML5 UP, used under its CCA 3.0 license.
+## Project documentation
+Analysis, datasets, and project-specific instructions belong in the linked project repositories. No résumé download or on-site case-study pages are currently provided.
