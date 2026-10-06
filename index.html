@@ -23,10 +23,20 @@
     .name { text-decoration: none; font-size: 1rem; font-weight: 700; letter-spacing: -.02em; }
     .nav-links { display: flex; gap: 20px; align-items: center; }
     .nav-links a { color: var(--muted); font-size: .92rem; text-decoration: none; }
-    .hero { max-width: 760px; padding: 105px 0 82px; }
+    .hero { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 52px; padding: 96px 0 82px; align-items: center; }
+    .hero-copy { min-width: 0; }
+    .research-highlight { padding: 28px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+    .research-highlight h2 { font-size: 1.25rem; letter-spacing: -.025em; margin-bottom: 14px; }
+    .research-highlight p { color: var(--muted); font-size: .98rem; }
+    .research-highlight a { color: var(--accent); font-weight: 650; font-size: .92rem; text-underline-offset: 4px; }
+    .research-intro { max-width: 720px; color: var(--muted); }
+    .publications { list-style: none; padding: 0; margin: 30px 0 0; }
+    .publications li { border-top: 1px solid var(--line); padding: 22px 0; }
+    .publications a { font-weight: 650; text-underline-offset: 4px; }
+    .publication-meta { display: block; color: var(--muted); font-size: .85rem; margin-top: 8px; }
     .eyebrow { color: var(--accent); font-size: .78rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
     h1, h2, h3, p { margin-top: 0; }
-    h1 { max-width: 720px; margin: 15px 0 20px; font-size: clamp(2.65rem, 7vw, 5.35rem); line-height: 1.02; letter-spacing: -.06em; }
+    h1 { max-width: 720px; margin: 15px 0 20px; font-size: clamp(2.65rem, 5.5vw, 4.65rem); line-height: 1.02; letter-spacing: -.06em; }
     .intro { max-width: 630px; color: var(--muted); font-size: 1.15rem; }
     .credentials { color: var(--muted); font-size: .85rem; margin: 22px 0 0; }
     .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
@@ -60,9 +70,9 @@
     .footer-links { display: flex; gap: 18px; }
     @media (max-width: 760px) {
       .wrap { width: min(100% - 32px, 1120px); }
-      nav { height: 66px; }
+      nav { min-height: 66px; height: auto; padding: 16px 0; flex-wrap: wrap; gap: 12px; }
       .nav-links { gap: 14px; }
-      .hero { padding: 76px 0 62px; }
+      .hero { grid-template-columns: 1fr; gap: 32px; padding: 60px 0 62px; }
       .projects, .other-grid { grid-template-columns: 1fr; }
       .project img { height: 220px; }
       .section-heading, .footer-content { display: block; }
@@ -78,20 +88,27 @@
       <div class="nav-links">
         <a href="#work">Work</a>
         <a href="https://www.linkedin.com/in/aliaabdulaziz/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:aliabinti.abdulaziz@gmail.com">Email</a>
+        <a href="#research">Research</a>
       </div>
     </nav>
 
     <main>
-      <section class="hero">
+      <section class="hero" aria-labelledby="intro-heading">
+        <div class="hero-copy">
         <div class="eyebrow">Data &amp; Analytics</div>
-        <h1>Clear analysis for better decisions.</h1>
-        <p class="intro">I’m Alia Abdul Aziz, a Singapore-based data and analytics professional. I use SQL, Python, dashboards, and analytics engineering to turn complex data into useful, trustworthy answers.</p>
-        <p class="credentials">MSc Applied Mathematics, Imperial College London<br>SQL · Python · Databricks · dbt · Tableau · R</p>
+        <h1 id="intro-heading">Clear analysis for better decisions.</h1>
+        <p class="intro">I’m Alia, a data and analytics professional based in Singapore, with experience across industry and healthcare research. I turn complex datasets into clear insights and practical tools.</p>
+        <p class="credentials">MSc Applied Mathematics, Imperial College London</p>
         <div class="actions">
-          <a class="button primary" href="#work">View selected work</a>
-          <a class="button" href="https://www.linkedin.com/in/aliaabdulaziz/" target="_blank" rel="noopener">View my LinkedIn</a>
+          <a class="button primary" href="#work">Explore my work</a>
+          <a class="button" href="https://www.linkedin.com/in/aliaabdulaziz/" target="_blank" rel="noopener">Connect on LinkedIn</a>
         </div>
+        </div>
+        <aside class="research-highlight" aria-labelledby="research-highlight-heading">
+          <h2 id="research-highlight-heading">Research in practice</h2>
+          <p>I cleaned and analysed Malaysia’s National Diabetes Registry, involving 1.6 million patients, for modelling and research.</p>
+          <a href="#research">Explore research →</a>
+        </aside>
       </section>
 
       <section class="section" id="work" aria-labelledby="work-heading">
@@ -160,11 +177,34 @@
           </div>
         </details>
       </section>
+
+      <section class="section" id="research" aria-labelledby="research-heading">
+        <div class="section-heading">
+          <h2 id="research-heading">Research &amp; publications</h2>
+        </div>
+        <div class="research-intro">
+          <p>At University of Malaya Medical Centre, I brought together data from more than 10 sources to help build the MeLODY diabetes database and cleaned and analysed Malaysia’s National Diabetes Registry, involving 1.6 million patients.</p>
+          <p>I also contributed to communicating research findings through a workshop with the University of Oxford and Malaysia’s Ministry of Health. The publications below are collaborative studies that I co-authored.</p>
+        </div>
+        <ul class="publications">
+          <li>
+            <a href="https://doi.org/10.1016/j.diabres.2023.110944" target="_blank" rel="noopener">Trends in all-cause mortality among adults with diagnosed type 2 diabetes in West Malaysia: 2010–2019</a>
+            <span class="publication-meta">Diabetes Research and Clinical Practice · 2023</span>
+          </li>
+          <li>
+            <a href="https://doi.org/10.1016/j.socscimed.2023.116426" target="_blank" rel="noopener">Health poverty among people with type 2 diabetes mellitus (T2DM) in Malaysia</a>
+            <span class="publication-meta">Social Science &amp; Medicine · 2024</span>
+          </li>
+          <li>
+            <a href="https://doi.org/10.1111/1753-0407.13346" target="_blank" rel="noopener">Effects of mobile health interventions on health-related outcomes in older adults with type 2 diabetes: A systematic review and meta-analysis</a>
+            <span class="publication-meta">Journal of Diabetes · 2023</span>
+          </li>
+        </ul>
+      </section>
     </main>
 
     <footer>
       <div class="footer-content">
-        <div>Based in Singapore · Open to data and analytics opportunities.</div>
         <div class="footer-links">
           <a href="mailto:aliabinti.abdulaziz@gmail.com">Email</a>
           <a href="https://www.linkedin.com/in/aliaabdulaziz/" target="_blank" rel="noopener">LinkedIn</a>
