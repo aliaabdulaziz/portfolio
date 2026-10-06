@@ -23,12 +23,8 @@
     .name { text-decoration: none; font-size: 1rem; font-weight: 700; letter-spacing: -.02em; }
     .nav-links { display: flex; gap: 20px; align-items: center; }
     .nav-links a { color: var(--muted); font-size: .92rem; text-decoration: none; }
-    .hero { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 52px; padding: 96px 0 82px; align-items: center; }
+    .hero { max-width: 760px; padding: 96px 0 82px; }
     .hero-copy { min-width: 0; }
-    .research-highlight { padding: 28px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
-    .research-highlight h2 { font-size: 1.25rem; letter-spacing: -.025em; margin-bottom: 14px; }
-    .research-highlight p { color: var(--muted); font-size: .98rem; }
-    .research-highlight a { color: var(--accent); font-weight: 650; font-size: .92rem; text-underline-offset: 4px; }
     .research-intro { max-width: 720px; color: var(--muted); }
     .publications { list-style: none; padding: 0; margin: 30px 0 0; }
     .publications li { border-top: 1px solid var(--line); padding: 22px 0; }
@@ -72,7 +68,7 @@
       .wrap { width: min(100% - 32px, 1120px); }
       nav { min-height: 66px; height: auto; padding: 16px 0; flex-wrap: wrap; gap: 12px; }
       .nav-links { gap: 14px; }
-      .hero { grid-template-columns: 1fr; gap: 32px; padding: 60px 0 62px; }
+      .hero { padding: 60px 0 62px; }
       .projects, .other-grid { grid-template-columns: 1fr; }
       .project img { height: 220px; }
       .section-heading, .footer-content { display: block; }
@@ -87,8 +83,8 @@
       <a class="name" href="/">Alia Abdul Aziz</a>
       <div class="nav-links">
         <a href="#work">Work</a>
-        <a href="https://www.linkedin.com/in/aliaabdulaziz/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="#research">Research</a>
+        <a href="https://www.linkedin.com/in/aliaabdulaziz/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </nav>
 
@@ -97,18 +93,13 @@
         <div class="hero-copy">
         <div class="eyebrow">Data &amp; Analytics</div>
         <h1 id="intro-heading">Clear analysis for better decisions.</h1>
-        <p class="intro">I’m Alia, a data and analytics professional based in Singapore, with experience across industry and healthcare research. I turn complex datasets into clear insights and practical tools.</p>
+        <p class="intro">I’m Alia, a data and analytics professional based in Singapore. My work spans industry and healthcare research, turning complex data into clear insights and practical tools.</p>
         <p class="credentials">MSc Applied Mathematics, Imperial College London</p>
         <div class="actions">
           <a class="button primary" href="#work">Explore my work</a>
-          <a class="button" href="https://www.linkedin.com/in/aliaabdulaziz/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+          <a class="button" href="#research">Explore research</a>
         </div>
         </div>
-        <aside class="research-highlight" aria-labelledby="research-highlight-heading">
-          <h2 id="research-highlight-heading">Research in practice</h2>
-          <p>I cleaned and analysed Malaysia’s National Diabetes Registry, involving 1.6 million patients, for modelling and research.</p>
-          <a href="#research">Explore research →</a>
-        </aside>
       </section>
 
       <section class="section" id="work" aria-labelledby="work-heading">
@@ -206,7 +197,7 @@
     <footer>
       <div class="footer-content">
         <div class="footer-links">
-          <a href="mailto:aliabinti.abdulaziz@gmail.com">Email</a>
+          <a href="mailto:aliabinti.abdulaziz@gmail.com">Get in touch</a>
           <a href="https://www.linkedin.com/in/aliaabdulaziz/" target="_blank" rel="noopener">LinkedIn</a>
           <a href="https://github.com/AliaAbdulAziz" target="_blank" rel="noopener">GitHub</a>
         </div>
