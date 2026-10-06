@@ -40,8 +40,16 @@
     .project { overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
     .project.featured { border-color: var(--accent); }
     .project.featured .project-content { background: #f5faf8; }
-    .more-projects { margin: 28px 0 0; font-size: .92rem; }
-    .more-projects a { color: var(--accent); font-weight: 650; text-underline-offset: 4px; }
+    .other-projects { margin-top: 28px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+    .other-projects summary { cursor: pointer; padding: 22px; }
+    .other-projects summary strong { font-size: 1.05rem; }
+    .other-projects summary span { display: block; margin: 5px 0 0 20px; color: var(--muted); font-size: .9rem; }
+    .other-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; padding: 0 22px 22px; }
+    .other-grid article { border-top: 1px solid var(--line); padding-top: 20px; }
+    .other-grid p { font-size: .93rem; color: var(--muted); }
+    .other-grid a { color: var(--accent); font-size: .9rem; font-weight: 650; text-underline-offset: 4px; }
+    a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     .project img { display: block; width: 100%; height: 190px; object-fit: cover; background: var(--surface); }
     .project-content { padding: 22px; }
     .tag { color: var(--accent); font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
@@ -56,7 +64,7 @@
       nav { height: 66px; }
       .nav-links { gap: 14px; }
       .hero { padding: 76px 0 62px; }
-      .projects { grid-template-columns: 1fr; }
+      .projects, .other-grid { grid-template-columns: 1fr; }
       .project img { height: 220px; }
       .section-heading, .footer-content { display: block; }
       .section-heading p { margin-top: 8px; }
@@ -80,10 +88,10 @@
         <div class="eyebrow">Data &amp; Analytics</div>
         <h1>Clear analysis for better decisions.</h1>
         <p class="intro">I’m Alia Abdul Aziz, a Singapore-based data and analytics professional. I use SQL, Python, dashboards, and analytics engineering to turn complex data into useful, trustworthy answers.</p>
-        <p class="credentials">MSc Applied Mathematics · SQL · Python · Databricks · dbt · Tableau · R</p>
+        <p class="credentials">MSc Applied Mathematics, Imperial College London<br>SQL · Python · Databricks · dbt · Tableau · R</p>
         <div class="actions">
           <a class="button primary" href="#work">View selected work</a>
-          <a class="button" href="mailto:aliabinti.abdulaziz@gmail.com?subject=Let%27s%20talk%20data%20and%20analytics">Get in touch</a>
+          <a class="button" href="https://www.linkedin.com/in/aliaabdulaziz/" target="_blank" rel="noopener">View my LinkedIn</a>
         </div>
       </section>
 
@@ -123,7 +131,35 @@
             </div>
           </article>
         </div>
-        <p class="more-projects"><a href="https://github.com/aliaabdulaziz?tab=repositories" target="_blank" rel="noopener">More projects on GitHub →</a></p>
+        <details class="other-projects">
+          <summary><strong>Other projects</strong><span>Movie analysis, an Excel dashboard, COVID-19 exploration, and web scraping.</span></summary>
+          <div class="other-grid">
+            <article>
+              <div class="tag">Python · Exploratory analysis</div>
+              <h3>Movie data exploration</h3>
+              <p>I explored relationships between movie budgets, gross earnings, and genres using pandas, seaborn, and Matplotlib.</p>
+              <a href="https://github.com/aliaabdulaziz/Movie-EDA" target="_blank" rel="noopener">Read the analysis on GitHub</a>
+            </article>
+            <article>
+              <div class="tag">Excel · Dashboarding</div>
+              <h3>Bike sales dashboard</h3>
+              <p>I prepared customer data, created age brackets and pivot tables, and built an interactive dashboard to explore bike-sales patterns.</p>
+              <a href="https://onedrive.live.com/embed?resid=50F3C3FDEAC02B4F%21473&amp;authkey=%21ANTTs7Lu6NZ6WEM&amp;em=2&amp;wdHideGridlines=True" target="_blank" rel="noopener">Open the interactive workbook</a>
+            </article>
+            <article>
+              <div class="tag">SQL · Exploratory analysis</div>
+              <h3>COVID-19 data exploration</h3>
+              <p>I used SQL Server joins, aggregations, and window functions to explore historical cases, deaths, and vaccination data.</p>
+              <a href="https://github.com/aliaabdulaziz/covid-project" target="_blank" rel="noopener">Read the SQL project on GitHub</a>
+            </article>
+            <article>
+              <div class="tag">Python · Web scraping</div>
+              <h3>TCD product scraper</h3>
+              <p>I used requests and BeautifulSoup to collect a product’s name, price, and review count into dated CSV records.</p>
+              <a href="https://github.com/aliaabdulaziz/TCD-Web-Scraping" target="_blank" rel="noopener">Read the scraper project on GitHub</a>
+            </article>
+          </div>
+        </details>
       </section>
     </main>
 
