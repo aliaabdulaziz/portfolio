@@ -117,7 +117,7 @@
     .curtain-left { transform-origin: 20px 0; animation: curtain-sway 8s ease-in-out infinite alternate; }
     .curtain-right { transform-origin: 280px 0; animation: curtain-sway 9s ease-in-out -3s infinite alternate-reverse; }
     @keyframes curtain-sway { from { transform: skewX(-1deg); } to { transform: skewX(2deg); } }
-    .cat-switch::after { content: attr(data-cat-name); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: #fff9ef; color: #79634f; border: 1px solid #eadfce; box-shadow: 0 2px 6px rgb(98 73 45 / 8%); padding: 4px 9px; border-radius: 8px; font-size: .75rem; white-space: nowrap; opacity: 0; pointer-events: none; }
+    .cat-switch::after { content: attr(data-cat-name); position: absolute; bottom: 100%; right: 0; background: #fff9ef; color: #79634f; border: 1px solid #eadfce; box-shadow: 0 2px 6px rgb(98 73 45 / 8%); padding: 4px 9px; border-radius: 8px; font-size: .75rem; white-space: nowrap; opacity: 0; pointer-events: none; }
     .cat-switch:hover::after, .cat-switch:focus-visible::after { opacity: 1; }
     .cat-switch:hover { background: rgb(255 255 255 / 10%); }
     .cat-tail { transform-origin: 236px 172px; animation: cat-tail-sway 5s ease-in-out infinite; }
@@ -208,7 +208,7 @@
                   </g>
                 </g>
               </svg>
-              <button class="cat-switch" id="cat-switch" type="button" aria-label="Salmah. Change to Tommy." data-cat-name="Salmah"></button>
+              <button class="cat-switch" id="cat-switch" type="button" aria-label="Salmah, one of my four cats. Click to meet Tommy." data-cat-name="Salmah · one of my cats"></button>
             </div>
             <div class="weather-caption">
             <label class="weather-location-label" for="weather-area">Forecast area in Singapore</label>
@@ -339,8 +339,8 @@
     const cat = cats[catIndex];
     const label = catNames[cat];
     scene.dataset.cat = cat;
-    catButton.setAttribute('aria-label', label + '. Change to ' + catNames[cats[(catIndex + 1) % cats.length]] + '.');
-    catButton.dataset.catName = label;
+    catButton.setAttribute('aria-label', label + ', one of my four cats. Click to meet ' + catNames[cats[(catIndex + 1) % cats.length]] + '.');
+    catButton.dataset.catName = label + ' · one of my cats';
   }
   catButton.addEventListener('click', () => {
     catIndex = (catIndex + 1) % cats.length;
