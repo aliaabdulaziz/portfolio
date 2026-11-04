@@ -201,7 +201,7 @@
                   </g>
                 </g>
               </svg>
-              <button class="cat-switch" id="cat-switch" type="button" aria-label="Black cat. Change to orange cat." title="Click to change cat"></button>
+              <button class="cat-switch" id="cat-switch" type="button" aria-label="Salmah. Change to Tommy." title="Salmah · click to meet Tommy"></button>
             </div>
             <div class="weather-caption">
             <label class="weather-location-label" for="weather-area">Forecast area in Singapore</label>
@@ -322,6 +322,7 @@
   const scene = document.getElementById('weather-scene');
   const catButton = document.getElementById('cat-switch');
   const cats = ['black', 'orange', 'tabby', 'dark-tabby'];
+  const catNames = { black: 'Salmah', orange: 'Tommy', tabby: 'Happy', 'dark-tabby': 'Hassan' };
   let catIndex = 0;
   try {
     const savedCat = localStorage.getItem('portfolio-cat');
@@ -329,9 +330,10 @@
   } catch {}
   function showCat() {
     const cat = cats[catIndex];
-    const label = cat === 'dark-tabby' ? 'Dark tabby' : cat[0].toUpperCase() + cat.slice(1);
+    const label = catNames[cat];
     scene.dataset.cat = cat;
-    catButton.setAttribute('aria-label', label + ' cat. Change to ' + cats[(catIndex + 1) % cats.length].replace('-', ' ') + ' cat.');
+    catButton.setAttribute('aria-label', label + '. Change to ' + catNames[cats[(catIndex + 1) % cats.length]] + '.');
+    catButton.title = label + ' · click to meet ' + catNames[cats[(catIndex + 1) % cats.length]];
   }
   catButton.addEventListener('click', () => {
     catIndex = (catIndex + 1) % cats.length;
