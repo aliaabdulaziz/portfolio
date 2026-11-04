@@ -90,15 +90,27 @@
     }
 
     .weather-window { max-width: 320px; width: 100%; justify-self: end; }
-    .weather-window summary { cursor: pointer; color: var(--accent); font-size: .95rem; padding: 10px 0; text-underline-offset: 4px; }
-    .weather-window summary:hover { text-decoration: underline; }
-    .weather-panel { padding-top: 12px; }
-    .weather-scene { position: relative; height: 132px; border: 6px solid #e7e2d9; border-radius: 60px 60px 6px 6px; background: #edf3f3; overflow: hidden; margin-bottom: 16px; display: grid; place-items: center; }
-    .weather-scene::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 48.5%, #e7e2d9 48.5%, #e7e2d9 51.5%, transparent 51.5%); pointer-events: none; }
-    .weather-scene span { font-size: 48px; }
-    .weather-scene[data-mood="rain"] { background: #dbe5ee; }
-    .weather-scene[data-mood="fair"] { background: #fff0d0; }
-    .weather-scene[data-mood="night"] { background: #27384e; }
+    .weather-heading { font-size: .85rem; font-weight: 600; color: var(--muted); letter-spacing: .02em; }
+    .weather-panel { padding-top: 14px; }
+    .weather-scene { position: relative; height: 190px; border: 7px solid #e7dacc; border-radius: 100px 100px 10px 10px; background: #edf3f3; overflow: hidden; margin-bottom: 18px; box-shadow: 0 5px 0 #d4c2b1; }
+    .weather-scene::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 49%, #e7dacc 49%, #e7dacc 51%, transparent 51%); pointer-events: none; }
+    .weather-art { width: 100%; height: 100%; display: block; }
+    .sky-sun, .sky-moon, .sky-rain { display: none; }
+    .weather-scene[data-mood="fair"], .weather-scene[data-mood="cloud"] { background: #fff3d9; }
+    .weather-scene[data-mood="fair"] .sky-sun, .weather-scene[data-mood="cloud"] .sky-sun { display: block; animation: sun-bob 5s ease-in-out infinite; }
+    .weather-scene[data-mood="fair"] .cloud-back { opacity: .3; }
+    .weather-scene[data-mood="rain"] { background: #dce7ef; }
+    .weather-scene[data-mood="rain"] .sky-rain { display: block; animation: rain-fall 1.5s linear infinite; }
+    .weather-scene[data-mood="night"] { background: #293e56; }
+    .weather-scene[data-mood="night"] .sky-moon { display: block; animation: sun-bob 6s ease-in-out infinite; }
+    .weather-scene[data-mood] .sky-cloud { animation: cloud-drift 7s ease-in-out infinite alternate; }
+    .weather-scene .cloud-back { animation-delay: -3s; }
+    .weather-motion { margin-left: 16px; }
+    .weather-window[data-paused] .weather-art * { animation-play-state: paused !important; }
+    @keyframes cloud-drift { from { transform: translateX(-5px); } to { transform: translateX(6px); } }
+    @keyframes sun-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+    @keyframes rain-fall { from { transform: translateY(-4px); opacity: .4; } to { transform: translateY(6px); opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { .weather-art * { animation: none !important; } .weather-motion { display: none; } }
     .weather-panel label { display: block; margin-bottom: 5px; font-size: .8rem; color: var(--muted); }
     .weather-panel select { width: 100%; font: inherit; font-size: .9rem; color: var(--ink); background: white; border: 1px solid var(--line); border-radius: 4px; padding: 8px; }
     .weather-status { font-size: .9rem; margin: 12px 0 6px; }
@@ -142,19 +154,29 @@
         </div>
         </div>
 
-        <details class="weather-window" id="weather-window">
-          <summary>☁ Singapore skies</summary>
+        <aside class="weather-window" id="weather-window" aria-labelledby="weather-heading">
+          <h2 class="weather-heading" id="weather-heading">Singapore skies</h2>
           <div class="weather-panel">
-            <div class="weather-scene" id="weather-scene" aria-hidden="true"><span id="weather-icon">☁️</span></div>
+            <div class="weather-scene" id="weather-scene" aria-hidden="true">
+              <svg class="weather-art" viewBox="0 0 300 180" fill="none">
+                <g class="sky-sun"><circle cx="196" cy="53" r="25" fill="#f8cb68"/><g stroke="#f8cb68" stroke-width="3" stroke-linecap="round"><path d="M196 16v-6m0 86v-6m37-37h6m-86 0h6m63-26 4-4m-61 61 4-4m53 0 4 4m-61-61 4 4"/></g><circle cx="189" cy="52" r="1.7" fill="#72543d"/><circle cx="203" cy="52" r="1.7" fill="#72543d"/><path d="M191 60q5 5 10 0" stroke="#72543d" stroke-width="1.8" stroke-linecap="round"/></g>
+                <g class="sky-moon"><path d="M206 26a26 26 0 1 0 16 43 27 27 0 0 1-16-43Z" fill="#fff0b9"/><path d="m156 33 2-5 2 5 5 2-5 2-2 5-2-5-5-2Zm84 65 2-5 2 5 5 2-5 2-2 5-2-5-5-2Z" fill="#fff0b9"/></g>
+                <g class="sky-cloud cloud-back"><path d="M63 81a15 15 0 0 1 13-15 22 22 0 0 1 43-1 16 16 0 0 1 6 31H76a15 15 0 0 1-13-15Z" fill="#fff" opacity=".6"/></g>
+                <g class="sky-cloud cloud-front"><path d="M102 99a19 19 0 0 1 17-19 29 29 0 0 1 56-3 22 22 0 0 1 8 43h-62a20 20 0 0 1-19-21Z" fill="#fff"/><circle cx="139" cy="103" r="2" fill="#71818c"/><circle cx="155" cy="103" r="2" fill="#71818c"/><path d="M142 111q5 4 10 0" stroke="#71818c" stroke-width="1.7" stroke-linecap="round"/></g>
+                <g class="sky-rain" stroke="#79a9c1" stroke-width="3" stroke-linecap="round"><path d="m119 133-4 10m29-7-4 10m29-13-4 10m-34 7-4 10m29-7-4 10"/></g>
+                <g class="sky-hills"><path d="M0 174q55-35 111 0t110 0 79 0v26H0Z" fill="#9bb9a2"/><path d="M0 186q80-31 161-5t139-2v21H0Z" fill="#739b86"/></g>
+              </svg>
+            </div>
             <label for="weather-area">How’s the weather over there?</label>
             <select id="weather-area" disabled><option value="City">City</option></select>
-            <p class="weather-status" id="weather-status" role="status" aria-live="polite">Open this window to check the forecast.</p>
+            <p class="weather-status" id="weather-status" role="status" aria-live="polite">Checking Singapore skies…</p>
             <p class="weather-meta" id="weather-meta"></p>
             <button class="weather-refresh" id="weather-refresh" type="button">Refresh forecast</button>
+            <button class="weather-refresh weather-motion" id="weather-motion" type="button" aria-pressed="false">Pause animation</button>
             <p class="weather-source">2-hour forecast · NEA via <a href="https://data.gov.sg/datasets/d_3f9e064e25005b0e42969944ccaf2e7a/view" target="_blank" rel="noopener">data.gov.sg</a></p>
             <noscript><p>Enable JavaScript to explore the forecast, or visit the data source above.</p></noscript>
           </div>
-        </details>
+        </aside>
       </section>
 
       <section class="section" id="work" aria-labelledby="work-heading">
@@ -262,7 +284,7 @@
   const status = document.getElementById('weather-status');
   const meta = document.getElementById('weather-meta');
   const scene = document.getElementById('weather-scene');
-  const icon = document.getElementById('weather-icon');
+  const motion = document.getElementById('weather-motion');
   const refresh = document.getElementById('weather-refresh');
   let cached = null;
   let busy = false;
@@ -272,7 +294,6 @@
 
   function render() {
     scene.removeAttribute('data-mood');
-    icon.textContent = '☁️';
     meta.textContent = '';
     if (!cached) return;
     const item = cached;
@@ -289,14 +310,12 @@
     }
     const text = forecast.forecast;
     let mood = 'cloud';
-    let symbol = '☁️';
-    if (/thunder/i.test(text)) { mood = 'rain'; symbol = '⛈️'; }
-    else if (/rain|shower/i.test(text)) { mood = 'rain'; symbol = '🌧️'; }
-    else if (/night/i.test(text)) { mood = 'night'; symbol = '🌙'; }
-    else if (/partly cloudy/i.test(text)) { symbol = '🌤️'; }
-    else if (/fair|sunny/i.test(text)) { mood = 'fair'; symbol = '☀️'; }
+    if (/thunder/i.test(text)) { mood = 'rain';  }
+    else if (/rain|shower/i.test(text)) { mood = 'rain';  }
+    else if (/night/i.test(text)) { mood = 'night';  }
+    else if (/partly cloudy/i.test(text)) { mood = 'cloud'; }
+    else if (/fair|sunny/i.test(text)) { mood = 'fair';  }
     scene.dataset.mood = mood;
-    icon.textContent = symbol;
     status.textContent = area.value + ': ' + text + '.';
     meta.textContent = 'Forecast valid ' + format(start) + '–' + format(end) + ' SGT. Not an observation of current conditions.';
   }
@@ -308,7 +327,6 @@
     status.textContent = 'Checking Singapore skies…';
     meta.textContent = '';
     scene.removeAttribute('data-mood');
-    icon.textContent = '☁️';
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 10000);
     try {
@@ -339,9 +357,12 @@
       refresh.disabled = false;
     }
   }
-  panel.addEventListener('toggle', () => {
-    if (panel.open) { if (!cached || Date.parse(cached.valid_period?.end) <= Date.now()) load(); else render(); }
+  motion.addEventListener('click', () => {
+    const paused = panel.toggleAttribute('data-paused');
+    motion.setAttribute('aria-pressed', String(paused));
+    motion.textContent = paused ? 'Resume animation' : 'Pause animation';
   });
+  load();
   area.addEventListener('change', render);
   refresh.addEventListener('click', load);
 })();
