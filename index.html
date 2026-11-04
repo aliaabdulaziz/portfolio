@@ -23,7 +23,7 @@
     .name { text-decoration: none; font-size: 1rem; font-weight: 700; letter-spacing: -.02em; }
     .nav-links { display: flex; gap: 20px; align-items: center; }
     .nav-links a { color: var(--muted); font-size: .92rem; text-decoration: none; }
-    .hero { max-width: 760px; padding: 96px 0 82px; }
+    .hero { max-width: 760px; padding: 60px 0 52px; }
     .hero-copy { min-width: 0; }
     .research-intro { max-width: 720px; color: var(--muted); }
     .publications { list-style: none; padding: 0; margin: 30px 0 0; }
@@ -42,6 +42,8 @@
     .section-heading { display: flex; justify-content: space-between; gap: 20px; align-items: baseline; margin-bottom: 28px; }
     h2 { margin-bottom: 0; font-size: clamp(1.75rem, 3vw, 2.45rem); letter-spacing: -.045em; }
     .section-heading p { margin-bottom: 0; color: var(--muted); }
+    #work .section-heading { display: block; }
+    #work .section-heading p { margin-top: 8px; }
     .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .project { overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
     .project.featured { border-color: var(--accent); }
@@ -72,7 +74,7 @@
       .wrap { width: min(100% - 32px, 1120px); }
       nav { min-height: 66px; height: auto; padding: 16px 0; flex-wrap: wrap; gap: 12px; }
       .nav-links { gap: 14px; }
-      .hero { padding: 60px 0 62px; }
+      .hero { padding: 40px 0; }
       .projects, .other-grid { grid-template-columns: 1fr; }
       .project img { height: 220px; }
       .section-heading, .footer-content { display: block; }
