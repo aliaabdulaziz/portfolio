@@ -108,6 +108,15 @@
     .weather-caption { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; justify-content: space-between; }
     .weather-panel .weather-location-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
     .weather-window[data-paused] .weather-art * { animation-play-state: paused !important; }
+    .window-cat { fill: var(--cat-colour, #24272b); }
+    .weather-scene { --cat-colour: #24272b; --cat-stripe: #9b6845; }
+    .weather-scene[data-cat="orange"] { --cat-colour: #d68a46; }
+    .weather-scene[data-cat="tabby"] { --cat-colour: #b4a091; --cat-stripe: #62574e; }
+    .cat-stripes { display: none; }
+    .weather-scene[data-cat="orange"] .cat-stripes, .weather-scene[data-cat="tabby"] .cat-stripes { display: block; }
+    .cat-switch { position: absolute; right: 7%; bottom: 0; width: 28%; height: 43%; border: 0; padding: 0; background: transparent; border-radius: 12px; cursor: pointer; touch-action: manipulation; }
+    .cat-switch:hover { background: rgb(255 255 255 / 10%); }
+    .cat-caption { margin: -4px 0 12px; font-size: .7rem; color: var(--muted); }
     .cat-tail { transform-origin: 236px 172px; animation: cat-tail-sway 5s ease-in-out infinite; }
     @keyframes cat-tail-sway { 0%, 100% { transform: rotate(-9deg); } 50% { transform: rotate(10deg); } }
     @keyframes cloud-drift { from { transform: translateX(-5px); } to { transform: translateX(6px); } }
@@ -163,23 +172,27 @@
         <aside class="weather-window" id="weather-window" aria-labelledby="weather-heading">
           <h2 class="weather-heading" id="weather-heading">Singapore skies</h2>
           <div class="weather-panel">
-            <div class="weather-scene" id="weather-scene" aria-hidden="true">
-              <svg class="weather-art" viewBox="0 0 300 180" fill="none">
+            <div class="weather-scene" id="weather-scene" data-cat="black">
+              <svg class="weather-art" viewBox="0 0 300 180" fill="none" aria-hidden="true" focusable="false">
                 <g class="sky-sun"><circle cx="196" cy="53" r="25" fill="#f8cb68"/><g stroke="#f8cb68" stroke-width="3" stroke-linecap="round"><path d="M196 16v-6m0 86v-6m37-37h6m-86 0h6m63-26 4-4m-61 61 4-4m53 0 4 4m-61-61 4 4"/></g><circle cx="189" cy="52" r="1.7" fill="#72543d"/><circle cx="203" cy="52" r="1.7" fill="#72543d"/><path d="M191 60q5 5 10 0" stroke="#72543d" stroke-width="1.8" stroke-linecap="round"/></g>
                 <g class="sky-moon"><path d="M206 26a26 26 0 1 0 16 43 27 27 0 0 1-16-43Z" fill="#fff0b9"/><path d="m156 33 2-5 2 5 5 2-5 2-2 5-2-5-5-2Zm84 65 2-5 2 5 5 2-5 2-2 5-2-5-5-2Z" fill="#fff0b9"/></g>
                 <g class="sky-cloud cloud-back"><path d="M63 81a15 15 0 0 1 13-15 22 22 0 0 1 43-1 16 16 0 0 1 6 31H76a15 15 0 0 1-13-15Z" fill="#fff" opacity=".6"/></g>
                 <g class="sky-cloud cloud-front"><path d="M102 99a19 19 0 0 1 17-19 29 29 0 0 1 56-3 22 22 0 0 1 8 43h-62a20 20 0 0 1-19-21Z" fill="#fff"/><circle cx="139" cy="103" r="2" fill="#71818c"/><circle cx="155" cy="103" r="2" fill="#71818c"/><path d="M142 111q5 4 10 0" stroke="#71818c" stroke-width="1.7" stroke-linecap="round"/></g>
                 <g class="sky-rain" stroke="#79a9c1" stroke-width="3" stroke-linecap="round"><path d="m119 133-4 10m29-7-4 10m29-13-4 10m-34 7-4 10m29-7-4 10"/></g>
                 <g class="sky-hills"><path d="M0 174q55-35 111 0t110 0 79 0v26H0Z" fill="#9bb9a2"/><path d="M0 186q80-31 161-5t139-2v21H0Z" fill="#739b86"/></g>
-                <g class="window-cat" fill="#24272b">
-                  <path class="cat-tail" d="M235 172C254 177 274 169 271 154c-2-9-12-8-12-1" fill="none" stroke="#24272b" stroke-width="8" stroke-linecap="round"/>
+                <g class="window-cat">
+                  <path class="cat-tail" d="M235 172C254 177 274 169 271 154c-2-9-12-8-12-1" fill="none" stroke="var(--cat-colour)" stroke-width="8" stroke-linecap="round"/>
                   <ellipse cx="231" cy="155" rx="15" ry="24"/>
                   <path d="m219 130-2-19 12 9h6l12-9-3 21a14 14 0 0 1-25-2Z"/>
                   <path d="M215 177q16-6 32 0v3h-32Z"/>
-                  <path d="M226 143q4 3 9 0" fill="none" stroke="#41464b" stroke-width="1.4" stroke-linecap="round"/>
+                  <g class="cat-stripes" fill="none" stroke="var(--cat-stripe)" stroke-width="2.6" stroke-linecap="round">
+                    <path d="m225 122 2 6m6-7v7m7-6-2 6M218 147l7 3m-9 6 8 2m20-11-6 3m8 6-8 2"/>
+                  </g>
                 </g>
               </svg>
+              <button class="cat-switch" id="cat-switch" type="button" aria-label="Black cat. Change to orange cat." title="Click to change cat"></button>
             </div>
+            <p class="cat-caption" id="cat-caption" aria-live="polite">Black cat · click the cat to change</p>
             <div class="weather-caption">
             <label class="weather-location-label" for="weather-area">Forecast area in Singapore</label>
             <select id="weather-area" disabled><option value="City">City</option></select>
@@ -303,6 +316,27 @@
   const scene = document.getElementById('weather-scene');
   const motion = document.getElementById('weather-motion');
   const refresh = document.getElementById('weather-refresh');
+  const catButton = document.getElementById('cat-switch');
+  const catCaption = document.getElementById('cat-caption');
+  const cats = ['black', 'orange', 'tabby'];
+  let catIndex = 0;
+  try {
+    const savedCat = localStorage.getItem('portfolio-cat');
+    if (cats.includes(savedCat)) catIndex = cats.indexOf(savedCat);
+  } catch {}
+  function showCat() {
+    const cat = cats[catIndex];
+    const label = cat[0].toUpperCase() + cat.slice(1);
+    scene.dataset.cat = cat;
+    catCaption.textContent = label + ' cat · click the cat to change';
+    catButton.setAttribute('aria-label', label + ' cat. Change to ' + cats[(catIndex + 1) % cats.length] + ' cat.');
+  }
+  catButton.addEventListener('click', () => {
+    catIndex = (catIndex + 1) % cats.length;
+    showCat();
+    try { localStorage.setItem('portfolio-cat', cats[catIndex]); } catch {}
+  });
+  showCat();
   let cached = null;
   let busy = false;
   const format = value => new Intl.DateTimeFormat('en-SG', {
