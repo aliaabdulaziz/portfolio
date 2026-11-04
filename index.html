@@ -111,8 +111,9 @@
     .weather-scene { --cat-colour: #24272b; --cat-stripe: #9b6845; }
     .weather-scene[data-cat="orange"] { --cat-colour: #d68a46; }
     .weather-scene[data-cat="tabby"] { --cat-colour: #b4a091; --cat-stripe: #62574e; }
+    .weather-scene[data-cat="dark-tabby"] { --cat-colour: #625b56; --cat-stripe: #302d2b; }
     .cat-stripes { display: none; }
-    .weather-scene[data-cat="orange"] .cat-stripes, .weather-scene[data-cat="tabby"] .cat-stripes { display: block; }
+    .weather-scene[data-cat="orange"] .cat-stripes, .weather-scene[data-cat="tabby"] .cat-stripes, .weather-scene[data-cat="dark-tabby"] .cat-stripes { display: block; }
     .cat-switch { position: absolute; right: 7%; bottom: 0; width: 28%; height: 43%; border: 0; padding: 0; background: transparent; border-radius: 12px; cursor: pointer; touch-action: manipulation; }
     .cat-switch:hover { background: rgb(255 255 255 / 10%); }
     .cat-tail { transform-origin: 236px 172px; animation: cat-tail-sway 5s ease-in-out 1; }
@@ -320,7 +321,7 @@
   const meta = document.getElementById('weather-meta');
   const scene = document.getElementById('weather-scene');
   const catButton = document.getElementById('cat-switch');
-  const cats = ['black', 'orange', 'tabby'];
+  const cats = ['black', 'orange', 'tabby', 'dark-tabby'];
   let catIndex = 0;
   try {
     const savedCat = localStorage.getItem('portfolio-cat');
@@ -328,9 +329,9 @@
   } catch {}
   function showCat() {
     const cat = cats[catIndex];
-    const label = cat[0].toUpperCase() + cat.slice(1);
+    const label = cat === 'dark-tabby' ? 'Dark tabby' : cat[0].toUpperCase() + cat.slice(1);
     scene.dataset.cat = cat;
-    catButton.setAttribute('aria-label', label + ' cat. Change to ' + cats[(catIndex + 1) % cats.length] + ' cat.');
+    catButton.setAttribute('aria-label', label + ' cat. Change to ' + cats[(catIndex + 1) % cats.length].replace('-', ' ') + ' cat.');
   }
   catButton.addEventListener('click', () => {
     catIndex = (catIndex + 1) % cats.length;
