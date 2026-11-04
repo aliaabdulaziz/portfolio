@@ -10,8 +10,6 @@ Selected work links to TikTok classification, Nashville housing SQL cleaning, an
 ## Preview and deployment
 There is no build step or JavaScript dependency for the redesigned homepage. Download this branch and open index.html locally, or serve the repository with a static-file server. The name link points to /, so use a server for root navigation.
 
-The live domain does not preview this branch automatically. The redesign is proposed in [PR #3](https://github.com/aliaabdulaziz/portfolio/pull/3); deployment follows the repository's configured GitHub Pages publishing source.
-
 ## Files and history
 - index.html contains the redesigned homepage and its CSS.
 - images/ contains project imagery.
