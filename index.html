@@ -29,7 +29,7 @@
     .name { text-decoration: none; font-size: 1rem; font-weight: 700; letter-spacing: -.02em; }
     .nav-links { display: flex; gap: 20px; align-items: center; }
     .nav-links a { color: var(--muted); font-size: .92rem; text-decoration: none; }
-    .hero { max-width: 760px; padding: 60px 0 52px; }
+    .hero { display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 56px; align-items: center; padding: 60px 0 52px; }
     .hero-copy { min-width: 0; }
     .research-intro { max-width: 720px; color: var(--muted); }
     .publications { list-style: none; padding: 0; margin: 30px 0 0; }
@@ -82,12 +82,31 @@
       .nav-links { gap: 14px; }
       .nav-directory { flex: 1; flex-wrap: wrap; gap: 8px 20px; }
       #work, #research { scroll-margin-top: 132px; }
-      .hero { padding: 40px 0; }
+      .hero { grid-template-columns: 1fr; gap: 28px; padding: 40px 0; }
       .projects, .other-grid { grid-template-columns: 1fr; }
       .project img { height: 220px; }
       .section-heading { display: block; }
       .section-heading p { margin-top: 8px; }
     }
+
+    .weather-window { max-width: 320px; width: 100%; justify-self: end; }
+    .weather-window summary { cursor: pointer; color: var(--accent); font-size: .95rem; padding: 10px 0; text-underline-offset: 4px; }
+    .weather-window summary:hover { text-decoration: underline; }
+    .weather-panel { padding-top: 12px; }
+    .weather-scene { position: relative; height: 132px; border: 6px solid #e7e2d9; border-radius: 60px 60px 6px 6px; background: #edf3f3; overflow: hidden; margin-bottom: 16px; display: grid; place-items: center; }
+    .weather-scene::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 48.5%, #e7e2d9 48.5%, #e7e2d9 51.5%, transparent 51.5%); pointer-events: none; }
+    .weather-scene span { font-size: 48px; }
+    .weather-scene[data-mood="rain"] { background: #dbe5ee; }
+    .weather-scene[data-mood="fair"] { background: #fff0d0; }
+    .weather-scene[data-mood="night"] { background: #27384e; }
+    .weather-panel label { display: block; margin-bottom: 5px; font-size: .8rem; color: var(--muted); }
+    .weather-panel select { width: 100%; font: inherit; font-size: .9rem; color: var(--ink); background: white; border: 1px solid var(--line); border-radius: 4px; padding: 8px; }
+    .weather-status { font-size: .9rem; margin: 12px 0 6px; }
+    .weather-meta, .weather-source { font-size: .75rem; color: var(--muted); }
+    .weather-refresh { font: inherit; font-size: .8rem; border: 0; background: transparent; padding: 8px 0; color: var(--accent); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+    .weather-refresh:disabled { opacity: .6; cursor: wait; }
+    button:focus-visible, select:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+    @media (max-width: 760px) { .weather-window { justify-self: start; } }
   </style>
 </head>
 <body>
@@ -122,6 +141,20 @@
           <a class="button primary" href="mailto:aliabinti.abdulaziz@gmail.com">Say hi!</a>
         </div>
         </div>
+
+        <details class="weather-window" id="weather-window">
+          <summary>☁ Singapore skies</summary>
+          <div class="weather-panel">
+            <div class="weather-scene" id="weather-scene" aria-hidden="true"><span id="weather-icon">☁️</span></div>
+            <label for="weather-area">How’s the weather over there?</label>
+            <select id="weather-area" disabled><option value="City">City</option></select>
+            <p class="weather-status" id="weather-status" role="status" aria-live="polite">Open this window to check the forecast.</p>
+            <p class="weather-meta" id="weather-meta"></p>
+            <button class="weather-refresh" id="weather-refresh" type="button">Refresh forecast</button>
+            <p class="weather-source">2-hour forecast · NEA via <a href="https://data.gov.sg/datasets/d_3f9e064e25005b0e42969944ccaf2e7a/view" target="_blank" rel="noopener">data.gov.sg</a></p>
+            <noscript><p>Enable JavaScript to explore the forecast, or visit the data source above.</p></noscript>
+          </div>
+        </details>
       </section>
 
       <section class="section" id="work" aria-labelledby="work-heading">
@@ -221,5 +254,97 @@
       <a class="button primary" href="mailto:aliabinti.abdulaziz@gmail.com">Let’s work together</a>
     </footer>
   </div>
+
+<script>
+(() => {
+  const panel = document.getElementById('weather-window');
+  const area = document.getElementById('weather-area');
+  const status = document.getElementById('weather-status');
+  const meta = document.getElementById('weather-meta');
+  const scene = document.getElementById('weather-scene');
+  const icon = document.getElementById('weather-icon');
+  const refresh = document.getElementById('weather-refresh');
+  let cached = null;
+  let busy = false;
+  const format = value => new Intl.DateTimeFormat('en-SG', {
+    timeZone: 'Asia/Singapore', hour: 'numeric', minute: '2-digit', day: 'numeric', month: 'short'
+  }).format(new Date(value));
+
+  function render() {
+    scene.removeAttribute('data-mood');
+    icon.textContent = '☁️';
+    meta.textContent = '';
+    if (!cached) return;
+    const item = cached;
+    const start = Date.parse(item.valid_period?.start);
+    const end = Date.parse(item.valid_period?.end);
+    if (!Number.isFinite(start) || !Number.isFinite(end) || Date.now() < start || Date.now() >= end) {
+      status.textContent = 'This forecast is no longer current. Please refresh.';
+      return;
+    }
+    const forecast = item.forecasts.find(entry => entry.area === area.value);
+    if (!forecast || typeof forecast.forecast !== 'string') {
+      status.textContent = 'No forecast available for this area.';
+      return;
+    }
+    const text = forecast.forecast;
+    let mood = 'cloud';
+    let symbol = '☁️';
+    if (/thunder/i.test(text)) { mood = 'rain'; symbol = '⛈️'; }
+    else if (/rain|shower/i.test(text)) { mood = 'rain'; symbol = '🌧️'; }
+    else if (/night/i.test(text)) { mood = 'night'; symbol = '🌙'; }
+    else if (/partly cloudy/i.test(text)) { symbol = '🌤️'; }
+    else if (/fair|sunny/i.test(text)) { mood = 'fair'; symbol = '☀️'; }
+    scene.dataset.mood = mood;
+    icon.textContent = symbol;
+    status.textContent = area.value + ': ' + text + '.';
+    meta.textContent = 'Forecast valid ' + format(start) + '–' + format(end) + ' SGT. Not an observation of current conditions.';
+  }
+
+  async function load() {
+    if (busy) return;
+    busy = true;
+    refresh.disabled = true;
+    status.textContent = 'Checking Singapore skies…';
+    meta.textContent = '';
+    scene.removeAttribute('data-mood');
+    icon.textContent = '☁️';
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 10000);
+    try {
+      const response = await fetch('https://api-open.data.gov.sg/v2/real-time/api/two-hr-forecast', { signal: controller.signal });
+      if (!response.ok) throw new Error('Forecast unavailable');
+      const result = await response.json();
+      const items = result.data?.items;
+      if (result.code !== 0 || !Array.isArray(items)) throw new Error('Invalid forecast');
+      const item = items.filter(entry => Array.isArray(entry.forecasts))
+        .sort((a, b) => Date.parse(b.timestamp) - Date.parse(a.timestamp))[0];
+      if (!item || !item.forecasts.length) throw new Error('No forecast');
+      const previous = area.value;
+      const names = [...new Set(item.forecasts.map(entry => entry.area).filter(name => typeof name === 'string'))].sort();
+      if (!names.length) throw new Error('No areas');
+      area.replaceChildren(...names.map(name => new Option(name, name)));
+      area.value = names.includes(previous) ? previous : names.includes('City') ? 'City' : names[0];
+      area.disabled = false;
+      cached = item;
+      render();
+    } catch {
+      cached = null;
+      area.disabled = true;
+      status.textContent = 'The weather window is taking a break. Try refreshing in a moment.';
+      meta.textContent = 'Forecast unavailable; no weather conditions are assumed.';
+    } finally {
+      clearTimeout(timeout);
+      busy = false;
+      refresh.disabled = false;
+    }
+  }
+  panel.addEventListener('toggle', () => {
+    if (panel.open) { if (!cached || Date.parse(cached.valid_period?.end) <= Date.now()) load(); else render(); }
+  });
+  area.addEventListener('change', render);
+  refresh.addEventListener('click', load);
+})();
+</script>
 </body>
 </html>
