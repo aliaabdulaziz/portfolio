@@ -74,8 +74,6 @@
     .project p { color: var(--muted); font-size: .93rem; }
     .project a { font-size: .92rem; font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 4px; }
     footer { padding: 34px 0 50px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
-    .footer-content { display: flex; justify-content: space-between; gap: 24px; }
-    .footer-links { display: flex; gap: 18px; }
     @media (max-width: 760px) {
       .wrap { width: min(100% - 32px, 1120px); }
       nav { min-height: 66px; height: auto; padding: 16px 0; flex-wrap: wrap; gap: 12px; }
@@ -85,9 +83,8 @@
       .hero { padding: 40px 0; }
       .projects, .other-grid { grid-template-columns: 1fr; }
       .project img { height: 220px; }
-      .section-heading, .footer-content { display: block; }
+      .section-heading { display: block; }
       .section-heading p { margin-top: 8px; }
-      .footer-links { margin-top: 16px; }
     }
   </style>
 </head>
@@ -218,13 +215,7 @@
     </main>
 
     <footer>
-      <div class="footer-content">
-        <div class="footer-links">
-          <a href="mailto:aliabinti.abdulaziz@gmail.com">Email</a>
-          <a href="https://www.linkedin.com/in/aliaabdulaziz/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://github.com/AliaAbdulAziz" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </div>
+      <a class="button primary" href="mailto:aliabinti.abdulaziz@gmail.com">Let’s work together</a>
     </footer>
   </div>
 </body>
