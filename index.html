@@ -96,16 +96,15 @@
     .weather-art { width: 100%; height: 100%; display: block; }
     .sky-sun, .sky-moon, .sky-rain { display: none; }
     .weather-scene[data-mood="fair"], .weather-scene[data-mood="cloud"] { background: #fff3d9; }
-    .weather-scene[data-mood="fair"] .sky-sun, .weather-scene[data-mood="cloud"] .sky-sun { display: block; animation: sun-bob 5s ease-in-out infinite; }
+    .weather-scene[data-mood="fair"] .sky-sun, .weather-scene[data-mood="cloud"] .sky-sun { display: block; animation: sun-bob 5s ease-in-out 1; }
     .weather-scene[data-mood="fair"] .cloud-back { opacity: .3; }
     .weather-scene[data-mood="rain"] { background: #dce7ef; }
-    .weather-scene[data-mood="rain"] .sky-rain { display: block; animation: rain-fall 1.5s linear infinite; }
+    .weather-scene[data-mood="rain"] .sky-rain { display: block; animation: rain-fall 1.5s linear 3; }
     .weather-scene[data-mood="night"] { background: #293e56; }
-    .weather-scene[data-mood="night"] .sky-moon { display: block; animation: sun-bob 6s ease-in-out infinite; }
-    .weather-scene[data-mood] .sky-cloud { animation: cloud-drift 7s ease-in-out infinite alternate; }
+    .weather-scene[data-mood="night"] .sky-moon { display: block; animation: sun-bob 5s ease-in-out 1; }
+    .weather-scene[data-mood] .sky-cloud { animation: cloud-drift 5s ease-in-out 1 alternate; }
     .weather-scene .cloud-back { animation-delay: -3s; }
-    .weather-controls { display: flex; align-items: center; gap: 16px; }
-    .weather-caption { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; justify-content: space-between; }
+    .weather-caption { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
     .weather-panel .weather-location-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
     .weather-window[data-paused] .weather-art * { animation-play-state: paused !important; }
     .window-cat { fill: var(--cat-colour, #24272b); }
@@ -116,22 +115,19 @@
     .weather-scene[data-cat="orange"] .cat-stripes, .weather-scene[data-cat="tabby"] .cat-stripes { display: block; }
     .cat-switch { position: absolute; right: 7%; bottom: 0; width: 28%; height: 43%; border: 0; padding: 0; background: transparent; border-radius: 12px; cursor: pointer; touch-action: manipulation; }
     .cat-switch:hover { background: rgb(255 255 255 / 10%); }
-    .cat-caption { margin: -4px 0 12px; font-size: .7rem; color: var(--muted); }
-    .cat-tail { transform-origin: 236px 172px; animation: cat-tail-sway 5s ease-in-out infinite; }
+    .cat-tail { transform-origin: 236px 172px; animation: cat-tail-sway 5s ease-in-out 1; }
     @keyframes cat-tail-sway { 0%, 100% { transform: rotate(-9deg); } 50% { transform: rotate(10deg); } }
     @keyframes cloud-drift { from { transform: translateX(-5px); } to { transform: translateX(6px); } }
     @keyframes sun-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
     @keyframes rain-fall { from { transform: translateY(-4px); opacity: .4; } to { transform: translateY(6px); opacity: 1; } }
     @media (prefers-reduced-motion: reduce) { .weather-art * { animation: none !important; } .weather-motion { display: none; } }
     .weather-panel label { display: block; margin-bottom: 5px; font-size: .8rem; color: var(--muted); }
-    .weather-panel select { min-width: 0; max-width: 62%; font: inherit; font-size: .9rem; font-weight: 600; color: var(--ink); background: transparent; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; padding: 6px 18px 6px 0; }
+    .weather-panel select { min-width: 0; width: 100%; max-width: 100%; font: inherit; font-size: .85rem; font-weight: 600; color: var(--ink); background: transparent; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; padding: 6px 18px 6px 0; }
     .weather-status { font-size: .85rem; margin: 0; color: var(--muted); }
     .weather-meta { margin: 9px 0; }
     .weather-source { margin: 6px 0 0; }
     .weather-source a { text-underline-offset: 3px; }
     .weather-meta, .weather-source { font-size: .75rem; color: var(--muted); }
-    .weather-refresh { font: inherit; font-size: .75rem; border: 0; background: transparent; padding: 6px 0; color: var(--accent); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
-    .weather-refresh:disabled { opacity: .6; cursor: wait; }
     button:focus-visible, select:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
     @media (max-width: 760px) { .weather-window { justify-self: start; } }
   </style>
@@ -170,7 +166,7 @@
         </div>
 
         <aside class="weather-window" id="weather-window" aria-labelledby="weather-heading">
-          <h2 class="weather-heading" id="weather-heading">Singapore skies</h2>
+          <h2 class="weather-heading" id="weather-heading">A little window outside</h2>
           <div class="weather-panel">
             <div class="weather-scene" id="weather-scene" data-cat="black">
               <svg class="weather-art" viewBox="0 0 300 180" fill="none" aria-hidden="true" focusable="false">
@@ -192,17 +188,12 @@
               </svg>
               <button class="cat-switch" id="cat-switch" type="button" aria-label="Black cat. Change to orange cat." title="Click to change cat"></button>
             </div>
-            <p class="cat-caption" id="cat-caption" aria-live="polite">Black cat · click the cat to change</p>
             <div class="weather-caption">
             <label class="weather-location-label" for="weather-area">Forecast area in Singapore</label>
             <select id="weather-area" disabled><option value="City">City</option></select>
             <p class="weather-status" id="weather-status" role="status" aria-live="polite">Checking Singapore skies…</p>
             </div>
             <p class="weather-meta" id="weather-meta"></p>
-            <div class="weather-controls">
-            <button class="weather-refresh" id="weather-refresh" type="button">Refresh</button>
-            <button class="weather-refresh weather-motion" id="weather-motion" type="button" aria-pressed="false">Pause</button>
-            </div>
             <p class="weather-source">NEA · <a href="https://data.gov.sg/datasets/d_3f9e064e25005b0e42969944ccaf2e7a/view" target="_blank" rel="noopener">data.gov.sg</a></p>
             <noscript><p>Enable JavaScript to explore the forecast, or visit the data source above.</p></noscript>
           </div>
@@ -314,10 +305,7 @@
   const status = document.getElementById('weather-status');
   const meta = document.getElementById('weather-meta');
   const scene = document.getElementById('weather-scene');
-  const motion = document.getElementById('weather-motion');
-  const refresh = document.getElementById('weather-refresh');
   const catButton = document.getElementById('cat-switch');
-  const catCaption = document.getElementById('cat-caption');
   const cats = ['black', 'orange', 'tabby'];
   let catIndex = 0;
   try {
@@ -328,7 +316,6 @@
     const cat = cats[catIndex];
     const label = cat[0].toUpperCase() + cat.slice(1);
     scene.dataset.cat = cat;
-    catCaption.textContent = label + ' cat · click the cat to change';
     catButton.setAttribute('aria-label', label + ' cat. Change to ' + cats[(catIndex + 1) % cats.length] + ' cat.');
   }
   catButton.addEventListener('click', () => {
@@ -351,7 +338,7 @@
     const start = Date.parse(item.valid_period?.start);
     const end = Date.parse(item.valid_period?.end);
     if (!Number.isFinite(start) || !Number.isFinite(end) || Date.now() < start || Date.now() >= end) {
-      status.textContent = 'This forecast is no longer current. Please refresh.';
+      status.textContent = 'This forecast is no longer current. The forecast will update shortly.';
       return;
     }
     const forecast = item.forecasts.find(entry => entry.area === area.value);
@@ -375,7 +362,6 @@
   async function load() {
     if (busy) return;
     busy = true;
-    refresh.disabled = true;
     status.textContent = 'Checking Singapore skies…';
     meta.textContent = '';
     scene.removeAttribute('data-mood');
@@ -401,22 +387,19 @@
     } catch {
       cached = null;
       area.disabled = true;
-      status.textContent = 'The weather window is taking a break. Try refreshing in a moment.';
+      status.textContent = 'The weather window is taking a break. Please check again later.';
       meta.textContent = 'Forecast unavailable; no weather conditions are assumed.';
     } finally {
       clearTimeout(timeout);
       busy = false;
-      refresh.disabled = false;
     }
   }
-  motion.addEventListener('click', () => {
-    const paused = panel.toggleAttribute('data-paused');
-    motion.setAttribute('aria-pressed', String(paused));
-    motion.textContent = paused ? 'Play' : 'Pause';
-  });
   load();
-  area.addEventListener('change', render);
-  refresh.addEventListener('click', load);
+  area.addEventListener('change', () => {
+    if (!cached || Date.parse(cached.valid_period?.end) <= Date.now()) load();
+    else render();
+  });
+  setInterval(load, 30 * 60 * 1000);
 })();
 </script>
 </body>
