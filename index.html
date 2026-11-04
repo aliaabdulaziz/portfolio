@@ -90,10 +90,9 @@
     }
 
     .weather-window { max-width: 320px; width: 100%; justify-self: end; }
-    .weather-heading { font-size: .85rem; font-weight: 600; color: var(--muted); letter-spacing: .02em; }
+    .weather-heading { font-size: .8rem; font-weight: 600; color: var(--muted); letter-spacing: .02em; }
     .weather-panel { padding-top: 14px; }
-    .weather-scene { position: relative; height: 190px; border: 7px solid #e7dacc; border-radius: 100px 100px 10px 10px; background: #edf3f3; overflow: hidden; margin-bottom: 18px; box-shadow: 0 5px 0 #d4c2b1; }
-    .weather-scene::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 49%, #e7dacc 49%, #e7dacc 51%, transparent 51%); pointer-events: none; }
+    .weather-scene { position: relative; height: 168px; border: 5px solid #e7dacc; border-radius: 100px 100px 10px 10px; background: #edf3f3; overflow: hidden; margin-bottom: 16px; box-shadow: 0 3px 0 #d4c2b1; }
     .weather-art { width: 100%; height: 100%; display: block; }
     .sky-sun, .sky-moon, .sky-rain { display: none; }
     .weather-scene[data-mood="fair"], .weather-scene[data-mood="cloud"] { background: #fff3d9; }
@@ -105,17 +104,22 @@
     .weather-scene[data-mood="night"] .sky-moon { display: block; animation: sun-bob 6s ease-in-out infinite; }
     .weather-scene[data-mood] .sky-cloud { animation: cloud-drift 7s ease-in-out infinite alternate; }
     .weather-scene .cloud-back { animation-delay: -3s; }
-    .weather-motion { margin-left: 16px; }
+    .weather-controls { display: flex; align-items: center; gap: 16px; }
+    .weather-caption { display: flex; gap: 12px; align-items: center; justify-content: space-between; }
+    .weather-panel .weather-location-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
     .weather-window[data-paused] .weather-art * { animation-play-state: paused !important; }
     @keyframes cloud-drift { from { transform: translateX(-5px); } to { transform: translateX(6px); } }
     @keyframes sun-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
     @keyframes rain-fall { from { transform: translateY(-4px); opacity: .4; } to { transform: translateY(6px); opacity: 1; } }
     @media (prefers-reduced-motion: reduce) { .weather-art * { animation: none !important; } .weather-motion { display: none; } }
     .weather-panel label { display: block; margin-bottom: 5px; font-size: .8rem; color: var(--muted); }
-    .weather-panel select { width: 100%; font: inherit; font-size: .9rem; color: var(--ink); background: white; border: 1px solid var(--line); border-radius: 4px; padding: 8px; }
-    .weather-status { font-size: .9rem; margin: 12px 0 6px; }
+    .weather-panel select { min-width: 0; max-width: 62%; font: inherit; font-size: .9rem; font-weight: 600; color: var(--ink); background: transparent; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; padding: 6px 18px 6px 0; }
+    .weather-status { font-size: .85rem; margin: 0; color: var(--muted); }
+    .weather-meta { margin: 9px 0; }
+    .weather-source { margin: 6px 0 0; }
+    .weather-source a { text-underline-offset: 3px; }
     .weather-meta, .weather-source { font-size: .75rem; color: var(--muted); }
-    .weather-refresh { font: inherit; font-size: .8rem; border: 0; background: transparent; padding: 8px 0; color: var(--accent); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+    .weather-refresh { font: inherit; font-size: .75rem; border: 0; background: transparent; padding: 6px 0; color: var(--accent); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
     .weather-refresh:disabled { opacity: .6; cursor: wait; }
     button:focus-visible, select:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
     @media (max-width: 760px) { .weather-window { justify-self: start; } }
@@ -167,13 +171,17 @@
                 <g class="sky-hills"><path d="M0 174q55-35 111 0t110 0 79 0v26H0Z" fill="#9bb9a2"/><path d="M0 186q80-31 161-5t139-2v21H0Z" fill="#739b86"/></g>
               </svg>
             </div>
-            <label for="weather-area">How’s the weather over there?</label>
+            <div class="weather-caption">
+            <label class="weather-location-label" for="weather-area">Forecast area in Singapore</label>
             <select id="weather-area" disabled><option value="City">City</option></select>
             <p class="weather-status" id="weather-status" role="status" aria-live="polite">Checking Singapore skies…</p>
+            </div>
             <p class="weather-meta" id="weather-meta"></p>
-            <button class="weather-refresh" id="weather-refresh" type="button">Refresh forecast</button>
-            <button class="weather-refresh weather-motion" id="weather-motion" type="button" aria-pressed="false">Pause animation</button>
-            <p class="weather-source">2-hour forecast · NEA via <a href="https://data.gov.sg/datasets/d_3f9e064e25005b0e42969944ccaf2e7a/view" target="_blank" rel="noopener">data.gov.sg</a></p>
+            <div class="weather-controls">
+            <button class="weather-refresh" id="weather-refresh" type="button">Refresh</button>
+            <button class="weather-refresh weather-motion" id="weather-motion" type="button" aria-pressed="false">Pause</button>
+            </div>
+            <p class="weather-source">NEA · <a href="https://data.gov.sg/datasets/d_3f9e064e25005b0e42969944ccaf2e7a/view" target="_blank" rel="noopener">data.gov.sg</a></p>
             <noscript><p>Enable JavaScript to explore the forecast, or visit the data source above.</p></noscript>
           </div>
         </aside>
@@ -289,7 +297,7 @@
   let cached = null;
   let busy = false;
   const format = value => new Intl.DateTimeFormat('en-SG', {
-    timeZone: 'Asia/Singapore', hour: 'numeric', minute: '2-digit', day: 'numeric', month: 'short'
+    timeZone: 'Asia/Singapore', hour: 'numeric', minute: '2-digit'
   }).format(new Date(value));
 
   function render() {
@@ -316,8 +324,9 @@
     else if (/partly cloudy/i.test(text)) { mood = 'cloud'; }
     else if (/fair|sunny/i.test(text)) { mood = 'fair';  }
     scene.dataset.mood = mood;
-    status.textContent = area.value + ': ' + text + '.';
-    meta.textContent = 'Forecast valid ' + format(start) + '–' + format(end) + ' SGT. Not an observation of current conditions.';
+    status.textContent = text;
+    meta.textContent = 'Forecast · ' + format(start) + '–' + format(end) + ' SGT';
+    meta.title = 'Two-hour area forecast, not an observation of current conditions.';
   }
 
   async function load() {
@@ -360,7 +369,7 @@
   motion.addEventListener('click', () => {
     const paused = panel.toggleAttribute('data-paused');
     motion.setAttribute('aria-pressed', String(paused));
-    motion.textContent = paused ? 'Resume animation' : 'Pause animation';
+    motion.textContent = paused ? 'Play' : 'Pause';
   });
   load();
   area.addEventListener('change', render);
