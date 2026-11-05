@@ -13,7 +13,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://aliaaziz.work/">
   <style>
-    :root { --ink: #17212b; --muted: #5d6873; --line: #dde3e8; --surface: #f7f9fa; --accent: #0d6e63; }
+    :root { --ink: #17212b; --muted: #5d6873; --line: #dde3e8; --surface: #f7f9fa; --accent: #a83e65; --accent-soft: #fff2f6; --accent-line: #eed0dc; --sill: #a96980; }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { margin: 0; color: var(--ink); background: #fff; font: 16px/1.6 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
@@ -23,7 +23,7 @@
     .nav-directory { display: flex; align-items: center; gap: 32px; }
     .nav-social { display: flex; align-items: center; gap: 4px; }
     .nav-social a { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; color: var(--muted); border-radius: 4px; }
-    .nav-social a:hover { color: var(--accent); background: var(--surface); }
+    .nav-social a:hover { color: var(--accent); background: var(--accent-soft); }
     .nav-social svg { width: 20px; height: 20px; }
     #work, #research { scroll-margin-top: 96px; }
     .name { text-decoration: none; font-size: 1rem; font-weight: 700; letter-spacing: -.02em; }
@@ -53,14 +53,14 @@
     .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .project { display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
     .project.featured { border-color: var(--accent); }
-    .project.featured .project-content { background: #f5faf8; }
+    .project.featured .project-content { background: var(--accent-soft); }
     .other-projects { margin-top: 36px; }
     .other-projects summary { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; padding: 16px 0; list-style: none; color: var(--accent); }
     .other-projects summary::-webkit-details-marker { display: none; }
     .other-projects summary::before { content: "+"; font-size: 1.2rem; line-height: 1; font-weight: 400; }
     .other-projects[open] summary::before { content: "−"; }
     .other-projects summary strong { font-size: 1rem; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
-    .other-projects summary:hover { color: var(--ink); }
+    .other-projects summary:hover { color: #852c4d; }
     .other-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; padding: 8px 0 0; }
     .other-grid article { border-top: 1px solid var(--line); padding-top: 20px; }
     .other-grid p { font-size: .93rem; color: var(--muted); }
@@ -70,7 +70,7 @@
     .project img { display: block; width: 100%; height: 190px; object-fit: cover; background: var(--surface); }
     .project-content { display: flex; flex-direction: column; align-items: flex-start; flex: 1; padding: 22px; }
     .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
-    .tag { display: inline-block; padding: 3px 9px; border: 1px solid #dce8e3; border-radius: 999px; background: #f2f7f4; color: var(--accent); font-size: .75rem; font-weight: 600; line-height: 1.5; }
+    .tag { display: inline-block; padding: 3px 9px; border: 1px solid var(--accent-line); border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-size: .75rem; font-weight: 600; line-height: 1.5; }
     h3 { margin: 8px 0 10px; font-size: 1.2rem; line-height: 1.25; letter-spacing: -.025em; }
     .project p { color: var(--muted); font-size: .93rem; }
     .project-content > a { margin-top: auto; }
@@ -91,7 +91,7 @@
 
     .weather-window { max-width: 320px; width: 100%; justify-self: end; }
     .weather-panel { padding-top: 0; }
-    .weather-scene { position: relative; height: 168px; border: 6px solid #e5d4c1; border-radius: 100px 100px 10px 10px; background: #edf3f3; overflow: hidden; margin-bottom: 16px; box-shadow: 0 4px 0 #d2baa2, inset 0 0 0 2px rgb(255 255 255 / 45%); }
+    .weather-scene { position: relative; height: 168px; border: 6px solid #e5d4c1; border-radius: 100px 100px 10px 10px; background: #edf3f3; overflow: hidden; margin-bottom: 16px; box-shadow: 0 4px 0 var(--sill), inset 0 0 0 2px rgb(255 255 255 / 45%); }
     .weather-art { width: 100%; height: 100%; display: block; }
     .sky-sun, .sky-moon, .sky-rain { display: none; }
     .weather-scene[data-mood="fair"], .weather-scene[data-mood="cloud"] { background: #fff3d9; }
@@ -117,7 +117,7 @@
     .curtain-left { transform-origin: 20px 0; animation: curtain-sway 8s ease-in-out infinite alternate; }
     .curtain-right { transform-origin: 280px 0; animation: curtain-sway 9s ease-in-out -3s infinite alternate-reverse; }
     @keyframes curtain-sway { from { transform: skewX(-1deg); } to { transform: skewX(2deg); } }
-    .cat-switch::after { content: attr(data-cat-name); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: #fff9ef; color: #79634f; border: 1px solid #eadfce; box-shadow: 0 2px 6px rgb(98 73 45 / 8%); padding: 4px 9px; border-radius: 8px; font-size: .75rem; white-space: nowrap; opacity: 0; pointer-events: none; }
+    .cat-switch::after { content: attr(data-cat-name); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: #fff1f5; color: #963e5e; border: 1px solid #edd0db; box-shadow: 0 2px 6px rgb(143 65 95 / 9%); padding: 4px 9px; border-radius: 8px; font-size: .75rem; white-space: nowrap; opacity: 0; pointer-events: none; }
     .cat-switch:hover::after, .cat-switch:focus-visible::after { opacity: 1; }
     .cat-switch:hover { background: rgb(255 255 255 / 10%); }
     .cat-tail { transform-origin: 236px 172px; animation: cat-tail-sway 5s ease-in-out infinite; }
@@ -135,6 +135,19 @@
     .weather-meta, .weather-source { font-size: .75rem; color: var(--muted); }
     button:focus-visible, select:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
     @media (max-width: 760px) { .weather-window { justify-self: start; } }
+
+    a:hover, .nav-links a:hover { color: var(--accent); }
+    .button:hover { border-color: var(--accent); }
+    .button.primary:hover { background: var(--accent); color: #fff; }
+    .weather-panel select:hover { border-bottom-color: var(--accent); }
+    .typed-intro { position: relative; display: inline-block; white-space: nowrap; padding-right: .12em; clip-path: inset(0 100% 0 0); animation: intro-type 1.3s steps(12, end) .15s forwards; }
+    .typed-intro::after { content: ""; position: absolute; right: 0; top: .1em; height: .85em; border-right: 2px solid var(--accent); animation: intro-caret .6s step-end 5 forwards; }
+    @keyframes intro-type { to { clip-path: inset(0 0 0 0); } }
+    @keyframes intro-caret { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) {
+      .typed-intro { clip-path: none; animation: none; }
+      .typed-intro::after { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -163,7 +176,7 @@
     <main>
       <section class="hero" aria-labelledby="intro-heading">
         <div class="hero-copy">        
-        <h1 id="intro-heading">Hi, I'm Alia.</h1>
+        <h1 id="intro-heading" aria-label="Hi, I'm Alia."><span class="typed-intro" aria-hidden="true">Hi, I'm Alia.</span></h1>
         <p class="intro">Data Analyst based in Singapore. My work spans industry and healthcare research, turning complex data into clear insights and practical tools.</p>
         <div class="actions">
           <a class="button primary" href="mailto:aliabinti.abdulaziz@gmail.com">Say hi!</a>
@@ -190,7 +203,7 @@
                     <path d="M290 4q-5 66 3 140M276 4q-4 65 6 140M263 4q0 62 11 140" stroke="white" stroke-opacity=".45" stroke-width="1.4"/>
                   </g>
                 </g>
-                <path d="M0 175h300v5H0Z" fill="#d8bea1"/>
+                <path d="M0 175h300v5H0Z" fill="#a96980"/>
                 <g class="window-plant">
                   <path d="M48 158v-24" stroke="#64866b" stroke-width="2" stroke-linecap="round"/>
                   <path d="M48 148q-17 0-13-14 14 0 13 14Zm0-9q0-16 12-17 7 12-12 17Z" fill="#84a589"/>
