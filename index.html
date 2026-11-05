@@ -91,15 +91,15 @@
 
     .weather-window { max-width: 320px; width: 100%; justify-self: end; }
     .weather-panel { padding-top: 0; }
-    .weather-scene { position: relative; height: 168px; border: 6px solid #e5d4c1; border-radius: 100px 100px 10px 10px; background: #edf3f3; overflow: hidden; margin-bottom: 16px; box-shadow: 0 4px 0 var(--sill), inset 0 0 0 2px rgb(255 255 255 / 45%); }
+    .weather-scene { position: relative; height: 168px; border: 6px solid #e8c4d0; border-radius: 100px 100px 10px 10px; background: #f8edf2; overflow: hidden; margin-bottom: 16px; box-shadow: 0 4px 0 var(--sill), inset 0 0 0 2px rgb(255 255 255 / 45%); }
     .weather-art { width: 100%; height: 100%; display: block; }
     .sky-sun, .sky-moon, .sky-rain { display: none; }
-    .weather-scene[data-mood="fair"], .weather-scene[data-mood="cloud"] { background: #fff3d9; }
+    .weather-scene[data-mood="fair"], .weather-scene[data-mood="cloud"] { background: #fff0f3; }
     .weather-scene[data-mood="fair"] .sky-sun, .weather-scene[data-mood="cloud"] .sky-sun { display: block; animation: sun-bob 5s ease-in-out infinite; }
     .weather-scene[data-mood="fair"] .cloud-back { opacity: .3; }
-    .weather-scene[data-mood="rain"] { background: #dce7ef; }
+    .weather-scene[data-mood="rain"] { background: #e9dfe9; }
     .weather-scene[data-mood="rain"] .sky-rain { display: block; animation: rain-fall 1.5s linear infinite; }
-    .weather-scene[data-mood="night"] { background: #293e56; }
+    .weather-scene[data-mood="night"] { background: #49394f; }
     .weather-scene[data-mood="night"] .sky-moon { display: block; animation: sun-bob 5s ease-in-out infinite; }
     .weather-scene[data-mood] .sky-cloud { animation: cloud-drift 5s ease-in-out infinite alternate; }
     .weather-scene .cloud-back { animation-delay: -3s; }
@@ -140,14 +140,13 @@
     .button:hover { border-color: var(--accent); }
     .button.primary:hover { background: var(--accent); color: #fff; }
     .weather-panel select:hover { border-bottom-color: var(--accent); }
-    .typed-intro { position: relative; display: inline-block; white-space: nowrap; padding-right: .12em; clip-path: inset(0 100% 0 0); animation: intro-type 1.3s steps(12, end) .15s forwards; }
-    .typed-intro::after { content: ""; position: absolute; right: 0; top: .1em; height: .85em; border-right: 2px solid var(--accent); animation: intro-caret .6s step-end 5 forwards; }
-    @keyframes intro-type { to { clip-path: inset(0 0 0 0); } }
-    @keyframes intro-caret { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
-    @media (prefers-reduced-motion: reduce) {
-      .typed-intro { clip-path: none; animation: none; }
-      .typed-intro::after { display: none; }
-    }
+    .typed-intro { position: relative; display: inline-block; white-space: nowrap; }
+    .typed-intro-reserve { visibility: hidden; }
+    .typed-intro-live { position: absolute; left: 0; top: 0; white-space: nowrap; }
+    .typed-intro.is-typing .typed-intro-live::after { content: ""; display: inline-block; height: .85em; margin-left: .04em; border-right: 2px solid var(--accent); vertical-align: -.02em; }
+    #research .section-heading { margin-bottom: 8px; }
+    #research .research-intro > p:first-child { margin-top: 0; }
+
   </style>
 </head>
 <body>
@@ -176,7 +175,7 @@
     <main>
       <section class="hero" aria-labelledby="intro-heading">
         <div class="hero-copy">        
-        <h1 id="intro-heading" aria-label="Hi, I'm Alia."><span class="typed-intro" aria-hidden="true">Hi, I'm Alia.</span></h1>
+        <h1 id="intro-heading" aria-label="Hi, I'm Alia."><span class="typed-intro" aria-hidden="true"><span class="typed-intro-reserve">Hi, I'm Alia.</span><span class="typed-intro-live">Hi, I'm Alia.</span></span></h1>
         <p class="intro">Data Analyst based in Singapore. My work spans industry and healthcare research, turning complex data into clear insights and practical tools.</p>
         <div class="actions">
           <a class="button primary" href="mailto:aliabinti.abdulaziz@gmail.com">Say hi!</a>
@@ -187,12 +186,12 @@
           <div class="weather-panel">
             <div class="weather-scene" id="weather-scene" data-cat="black">
               <svg class="weather-art" viewBox="0 0 300 180" fill="none" aria-hidden="true" focusable="false">
-                <g class="sky-sun"><circle cx="196" cy="53" r="25" fill="#f8cb68"/><g stroke="#f8cb68" stroke-width="3" stroke-linecap="round"><path d="M196 16v-6m0 86v-6m37-37h6m-86 0h6m63-26 4-4m-61 61 4-4m53 0 4 4m-61-61 4 4"/></g><circle cx="189" cy="52" r="1.7" fill="#72543d"/><circle cx="203" cy="52" r="1.7" fill="#72543d"/><path d="M191 60q5 5 10 0" stroke="#72543d" stroke-width="1.8" stroke-linecap="round"/></g>
-                <g class="sky-moon"><path d="M206 26a26 26 0 1 0 16 43 27 27 0 0 1-16-43Z" fill="#fff0b9"/><path d="m156 33 2-5 2 5 5 2-5 2-2 5-2-5-5-2Zm84 65 2-5 2 5 5 2-5 2-2 5-2-5-5-2Z" fill="#fff0b9"/></g>
+                <g class="sky-sun"><circle cx="196" cy="53" r="25" fill="#e9a2b4"/><g stroke="#e9a2b4" stroke-width="3" stroke-linecap="round"><path d="M196 16v-6m0 86v-6m37-37h6m-86 0h6m63-26 4-4m-61 61 4-4m53 0 4 4m-61-61 4 4"/></g><circle cx="189" cy="52" r="1.7" fill="#855269"/><circle cx="203" cy="52" r="1.7" fill="#855269"/><path d="M191 60q5 5 10 0" stroke="#855269" stroke-width="1.8" stroke-linecap="round"/></g>
+                <g class="sky-moon"><path d="M206 26a26 26 0 1 0 16 43 27 27 0 0 1-16-43Z" fill="#f8dce9"/><path d="m156 33 2-5 2 5 5 2-5 2-2 5-2-5-5-2Zm84 65 2-5 2 5 5 2-5 2-2 5-2-5-5-2Z" fill="#f8dce9"/></g>
                 <g class="sky-cloud cloud-back"><path d="M63 81a15 15 0 0 1 13-15 22 22 0 0 1 43-1 16 16 0 0 1 6 31H76a15 15 0 0 1-13-15Z" fill="#fff" opacity=".6"/></g>
                 <g class="sky-cloud cloud-front"><path d="M102 99a19 19 0 0 1 17-19 29 29 0 0 1 56-3 22 22 0 0 1 8 43h-62a20 20 0 0 1-19-21Z" fill="#fff"/><ellipse cx="133" cy="109" rx="4" ry="2.5" fill="#efc8c2" opacity=".7"/><ellipse cx="161" cy="109" rx="4" ry="2.5" fill="#efc8c2" opacity=".7"/><circle cx="139" cy="103" r="2" fill="#71818c"/><circle cx="155" cy="103" r="2" fill="#71818c"/><path d="M142 111q5 4 10 0" stroke="#71818c" stroke-width="1.7" stroke-linecap="round"/></g>
-                <g class="sky-rain" stroke="#79a9c1" stroke-width="3" stroke-linecap="round"><path d="m119 133-4 10m29-7-4 10m29-13-4 10m-34 7-4 10m29-7-4 10"/></g>
-                <g class="sky-hills"><path d="M0 174q55-35 111 0t110 0 79 0v26H0Z" fill="#9bb9a2"/><path d="M0 186q80-31 161-5t139-2v21H0Z" fill="#739b86"/></g>
+                <g class="sky-rain" stroke="#b58aa8" stroke-width="3" stroke-linecap="round"><path d="m119 133-4 10m29-7-4 10m29-13-4 10m-34 7-4 10m29-7-4 10"/></g>
+                <g class="sky-hills"><path d="M0 174q55-35 111 0t110 0 79 0v26H0Z" fill="#d6adc0"/><path d="M0 186q80-31 161-5t139-2v21H0Z" fill="#b984a0"/></g>
                 <g class="window-curtains">
                   <g class="curtain-left">
                     <path d="M0 0h43c-1 46-5 92-15 149q-8 6-15 0t-13 0Z" fill="white" fill-opacity=".46"/>
@@ -205,11 +204,11 @@
                 </g>
                 <path d="M0 175h300v5H0Z" fill="#a96980"/>
                 <g class="window-plant">
-                  <path d="M48 158v-24" stroke="#64866b" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M48 148q-17 0-13-14 14 0 13 14Zm0-9q0-16 12-17 7 12-12 17Z" fill="#84a589"/>
-                  <path d="M37 155h24l-4 21H41Z" fill="#cc967e"/>
-                  <rect x="35" y="153" width="28" height="5" rx="2" fill="#ddb09a"/>
-                  <path d="M44 164q5 4 10 0" stroke="#a96f59" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                  <path d="M48 158v-24" stroke="#987087" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M48 148q-17 0-13-14 14 0 13 14Zm0-9q0-16 12-17 7 12-12 17Z" fill="#bd93aa"/>
+                  <path d="M37 155h24l-4 21H41Z" fill="#c48ba2"/>
+                  <rect x="35" y="153" width="28" height="5" rx="2" fill="#e4b9ca"/>
+                  <path d="M44 164q5 4 10 0" stroke="#975d75" stroke-width="1.5" fill="none" stroke-linecap="round"/>
                 </g>
                 <g class="window-cat">
                   <path class="cat-tail" d="M235 172C254 177 274 169 271 154c-2-9-12-8-12-1" fill="none" stroke="var(--cat-colour)" stroke-width="8" stroke-linecap="round"/>
@@ -334,6 +333,21 @@
   </div>
 
 <script>
+(() => {
+  const heading = document.querySelector('.typed-intro');
+  if (!heading || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const live = heading.querySelector('.typed-intro-live');
+  const letters = Array.from(live.textContent);
+  live.textContent = '';
+  heading.classList.add('is-typing');
+  let index = 0;
+  function typeNext() {
+    live.textContent += letters[index++];
+    if (index < letters.length) setTimeout(typeNext, 100);
+    else heading.classList.remove('is-typing');
+  }
+  setTimeout(typeNext, 150);
+})();
 (() => {
   const panel = document.getElementById('weather-window');
   const area = document.getElementById('weather-area');
