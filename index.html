@@ -4,16 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Alia Abdul Aziz | Data Analyst</title>
-  <meta name="description" content="Portfolio of Alia Abdul Aziz, a data analytics professional in Singapore.">
-  <meta property="og:title" content="Alia Abdul Aziz | Data &amp; Analytics">
-  <meta property="og:description" content="Selected data, analytics, and dashboard projects.">
+  <meta name="description" content="Data analyst based in Singapore, working across industry and healthcare research. Explore my projects and publications.">
+  <meta property="og:title" content="Alia Abdul Aziz | Data Analyst">
+  <meta property="og:description" content="Data analyst based in Singapore, working across industry and healthcare research. Explore my projects and publications.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aliaaziz.work/">
-  <meta property="og:image" content="https://aliaaziz.work/images/tiktok.jpeg">
+  <meta property="og:image" content="https://aliaaziz.work/images/social-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Hi, I’m Alia. Data Analyst in Singapore. Take a look around. aliaaziz.work">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Alia Abdul Aziz | Data Analyst">
+  <meta name="twitter:description" content="Data analyst based in Singapore, working across industry and healthcare research. Explore my projects and publications.">
+  <meta name="twitter:image" content="https://aliaaziz.work/images/social-preview.png">
+  <meta name="twitter:image:alt" content="Hi, I’m Alia. Data Analyst in Singapore. Take a look around. aliaaziz.work">
   <link rel="canonical" href="https://aliaaziz.work/">
   <style>
-    :root { --ink: #17212b; --muted: #5d6873; --line: #dde3e8; --surface: #f7f9fa; --accent: #0d6e63; }
+    :root { --ink: #17212b; --muted: #5d6873; --line: #dde3e8; --surface: #f7f9fa; --accent: #a83e65; --accent-soft: #fff2f6; --accent-line: #eed0dc; --sill: #a96980; }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { margin: 0; color: var(--ink); background: #fff; font: 16px/1.6 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
@@ -23,7 +30,7 @@
     .nav-directory { display: flex; align-items: center; gap: 32px; }
     .nav-social { display: flex; align-items: center; gap: 4px; }
     .nav-social a { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; color: var(--muted); border-radius: 4px; }
-    .nav-social a:hover { color: var(--accent); background: var(--surface); }
+    .nav-social a:hover { color: var(--accent); background: var(--accent-soft); }
     .nav-social svg { width: 20px; height: 20px; }
     #work, #research { scroll-margin-top: 96px; }
     .name { text-decoration: none; font-size: 1rem; font-weight: 700; letter-spacing: -.02em; }
@@ -53,14 +60,14 @@
     .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .project { display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
     .project.featured { border-color: var(--accent); }
-    .project.featured .project-content { background: #f5faf8; }
+    .project.featured .project-content { background: #fffafd; }
     .other-projects { margin-top: 36px; }
     .other-projects summary { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; padding: 16px 0; list-style: none; color: var(--accent); }
     .other-projects summary::-webkit-details-marker { display: none; }
     .other-projects summary::before { content: "+"; font-size: 1.2rem; line-height: 1; font-weight: 400; }
     .other-projects[open] summary::before { content: "−"; }
     .other-projects summary strong { font-size: 1rem; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
-    .other-projects summary:hover { color: var(--ink); }
+    .other-projects summary:hover { color: #852c4d; }
     .other-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; padding: 8px 0 0; }
     .other-grid article { border-top: 1px solid var(--line); padding-top: 20px; }
     .other-grid p { font-size: .93rem; color: var(--muted); }
@@ -70,7 +77,7 @@
     .project img { display: block; width: 100%; height: 190px; object-fit: cover; background: var(--surface); }
     .project-content { display: flex; flex-direction: column; align-items: flex-start; flex: 1; padding: 22px; }
     .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
-    .tag { display: inline-block; padding: 3px 9px; border: 1px solid #dce8e3; border-radius: 999px; background: #f2f7f4; color: var(--accent); font-size: .75rem; font-weight: 600; line-height: 1.5; }
+    .tag { display: inline-block; padding: 3px 9px; border: 1px solid var(--accent-line); border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-size: .75rem; font-weight: 600; line-height: 1.5; }
     h3 { margin: 8px 0 10px; font-size: 1.2rem; line-height: 1.25; letter-spacing: -.025em; }
     .project p { color: var(--muted); font-size: .93rem; }
     .project-content > a { margin-top: auto; }
@@ -91,7 +98,7 @@
 
     .weather-window { max-width: 320px; width: 100%; justify-self: end; }
     .weather-panel { padding-top: 0; }
-    .weather-scene { position: relative; height: 168px; border: 6px solid #e5d4c1; border-radius: 100px 100px 10px 10px; background: #edf3f3; overflow: hidden; margin-bottom: 16px; box-shadow: 0 4px 0 #d2baa2, inset 0 0 0 2px rgb(255 255 255 / 45%); }
+    .weather-scene { position: relative; height: 168px; border: 6px solid #e8c4d0; border-radius: 100px 100px 10px 10px; background: #edf3f3; overflow: hidden; margin-bottom: 16px; box-shadow: 0 4px 0 var(--sill), inset 0 0 0 2px rgb(255 255 255 / 45%); }
     .weather-art { width: 100%; height: 100%; display: block; }
     .sky-sun, .sky-moon, .sky-rain { display: none; }
     .weather-scene[data-mood="fair"], .weather-scene[data-mood="cloud"] { background: #fff3d9; }
@@ -117,7 +124,7 @@
     .curtain-left { transform-origin: 20px 0; animation: curtain-sway 8s ease-in-out infinite alternate; }
     .curtain-right { transform-origin: 280px 0; animation: curtain-sway 9s ease-in-out -3s infinite alternate-reverse; }
     @keyframes curtain-sway { from { transform: skewX(-1deg); } to { transform: skewX(2deg); } }
-    .cat-switch::after { content: attr(data-cat-name); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: #fff9ef; color: #79634f; border: 1px solid #eadfce; box-shadow: 0 2px 6px rgb(98 73 45 / 8%); padding: 4px 9px; border-radius: 8px; font-size: .75rem; white-space: nowrap; opacity: 0; pointer-events: none; }
+    .cat-switch::after { content: attr(data-cat-name); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: #fff1f5; color: #963e5e; border: 1px solid #edd0db; box-shadow: 0 2px 6px rgb(143 65 95 / 9%); padding: 4px 9px; border-radius: 8px; font-size: .75rem; white-space: nowrap; opacity: 0; pointer-events: none; }
     .cat-switch:hover::after, .cat-switch:focus-visible::after { opacity: 1; }
     .cat-switch:hover { background: rgb(255 255 255 / 10%); }
     .cat-tail { transform-origin: 236px 172px; animation: cat-tail-sway 5s ease-in-out infinite; }
@@ -135,6 +142,49 @@
     .weather-meta, .weather-source { font-size: .75rem; color: var(--muted); }
     button:focus-visible, select:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
     @media (max-width: 760px) { .weather-window { justify-self: start; } }
+
+    a:hover, .nav-links a:hover { color: var(--accent); }
+    .button:hover { border-color: var(--accent); }
+    .button.primary:hover { background: var(--accent); color: #fff; }
+    .weather-panel select:hover { border-bottom-color: var(--accent); }
+    .typed-intro { position: relative; display: inline-block; white-space: nowrap; }
+    .typed-intro-reserve { visibility: hidden; }
+    .typed-intro-live { position: absolute; left: 0; top: 0; white-space: nowrap; }
+    .typed-intro.is-typing .typed-intro-live::after { content: ""; display: inline-block; height: .85em; margin-left: .04em; border-right: 2px solid var(--accent); vertical-align: -.02em; }
+    #research .section-heading { margin-bottom: 8px; }
+    #research .research-intro > p:first-child { margin-top: 0; }
+
+    .link-sparkle { position: fixed; z-index: 200; width: 9px; height: 9px; background: #cf7698; pointer-events: none; clip-path: polygon(50% 0, 61% 38%, 100% 50%, 61% 62%, 50% 100%, 39% 62%, 0 50%, 39% 38%); animation: link-glint 600ms ease-out forwards; }
+    .typed-intro.is-finished .typed-intro-live::after { animation: typing-finish-blink .8s step-end 3; }
+    @keyframes typing-finish-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    @keyframes link-glint {
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(.25) rotate(0deg); }
+      25% { opacity: .9; }
+      100% { opacity: 0; transform: translate(calc(-50% + var(--drift-x)), calc(-50% + var(--drift-y))) scale(.1) rotate(60deg); }
+    }
+    @media (prefers-reduced-motion: reduce) { .link-sparkle { display: none; animation: none; } }
+
+    .sky-extra-rain, .sky-lightning, .sky-wind, .sky-haze { display: none; }
+    .weather-scene[data-mood="overcast"] { background: #e1e6ea; }
+    .weather-scene[data-mood="overcast"] .cloud-front > path:first-child { fill: #c0cbd3; }
+    .weather-scene[data-mood="light-rain"] { background: #e7eff3; }
+    .weather-scene[data-mood="light-rain"] .sky-rain { display: block; opacity: .5; animation: rain-fall 2.2s linear infinite; }
+    .weather-scene[data-mood="heavy-rain"] { background: #cbd8e3; }
+    .weather-scene[data-mood="heavy-rain"] .sky-rain, .weather-scene[data-mood="heavy-rain"] .sky-extra-rain { display: block; animation: rain-fall .8s linear infinite; }
+    .weather-scene[data-mood="storm"] { background: #b9c7d5; }
+    .weather-scene[data-mood="storm"] .cloud-front > path:first-child { fill: #95a5b5; }
+    .weather-scene[data-mood="storm"] .sky-rain, .weather-scene[data-mood="storm"] .sky-extra-rain { display: block; animation: rain-fall .7s linear infinite; }
+    .weather-scene[data-mood="storm"] .sky-lightning { display: block; animation: storm-bolt 6s ease-in-out infinite; }
+    .weather-scene[data-mood="storm"] .sky-cloud { animation-duration: 3s; }
+    .weather-scene[data-mood="partly-night"] { background: #33465d; }
+    .weather-scene[data-mood="partly-night"] .sky-moon { display: block; animation: sun-bob 5s ease-in-out infinite; }
+    .weather-scene[data-mood="wind"] { background: #edf0ef; }
+    .weather-scene[data-mood="wind"] .sky-wind { display: block; animation: cloud-drift 2s ease-in-out infinite alternate; }
+    .weather-scene[data-mood="wind"] .sky-cloud { animation-duration: 2s; }
+    .weather-scene[data-mood="haze"] { background: #eee6d9; }
+    .weather-scene[data-mood="haze"] .sky-haze { display: block; animation: cloud-drift 9s ease-in-out infinite alternate; }
+    @keyframes storm-bolt { 0%, 100% { transform: translateY(0); opacity: .65; } 50% { transform: translateY(3px); opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { .weather-art * { animation: none !important; } }
   </style>
 </head>
 <body>
@@ -163,7 +213,7 @@
     <main>
       <section class="hero" aria-labelledby="intro-heading">
         <div class="hero-copy">        
-        <h1 id="intro-heading">Hi, I'm Alia.</h1>
+        <h1 id="intro-heading" aria-label="Hi, I'm Alia."><span class="typed-intro" aria-hidden="true"><span class="typed-intro-reserve">Hi, I'm Alia.</span><span class="typed-intro-live">Hi, I'm Alia.</span></span></h1>
         <p class="intro">Data Analyst based in Singapore. My work spans industry and healthcare research, turning complex data into clear insights and practical tools.</p>
         <div class="actions">
           <a class="button primary" href="mailto:aliabinti.abdulaziz@gmail.com">Say hi!</a>
@@ -179,6 +229,10 @@
                 <g class="sky-cloud cloud-back"><path d="M63 81a15 15 0 0 1 13-15 22 22 0 0 1 43-1 16 16 0 0 1 6 31H76a15 15 0 0 1-13-15Z" fill="#fff" opacity=".6"/></g>
                 <g class="sky-cloud cloud-front"><path d="M102 99a19 19 0 0 1 17-19 29 29 0 0 1 56-3 22 22 0 0 1 8 43h-62a20 20 0 0 1-19-21Z" fill="#fff"/><ellipse cx="133" cy="109" rx="4" ry="2.5" fill="#efc8c2" opacity=".7"/><ellipse cx="161" cy="109" rx="4" ry="2.5" fill="#efc8c2" opacity=".7"/><circle cx="139" cy="103" r="2" fill="#71818c"/><circle cx="155" cy="103" r="2" fill="#71818c"/><path d="M142 111q5 4 10 0" stroke="#71818c" stroke-width="1.7" stroke-linecap="round"/></g>
                 <g class="sky-rain" stroke="#79a9c1" stroke-width="3" stroke-linecap="round"><path d="m119 133-4 10m29-7-4 10m29-13-4 10m-34 7-4 10m29-7-4 10"/></g>
+                <g class="sky-extra-rain" stroke="#79a9c1" stroke-width="2.6" stroke-linecap="round" opacity=".75"><path d="m101 132-5 14m31 9-5 14m58-37-5 14m-13 7-5 14m38-22-5 14"/></g>
+                <path class="sky-lightning" d="m153 117-13 22h12l-8 21 26-30h-14l9-13Z" fill="#efc66b" stroke="#dbaf53" stroke-width=".8"/>
+                <g class="sky-wind" stroke="#a0b1bb" stroke-width="2" stroke-linecap="round"><path d="M68 130h32q12 0 10-8m-30 20h42m52 10h43q12 0 10-8"/></g>
+                <g class="sky-haze" stroke="#d5c8b7" stroke-width="7" stroke-linecap="round" opacity=".65"><path d="M60 129h179M78 143h151M64 157h173"/></g>
                 <g class="sky-hills"><path d="M0 174q55-35 111 0t110 0 79 0v26H0Z" fill="#9bb9a2"/><path d="M0 186q80-31 161-5t139-2v21H0Z" fill="#739b86"/></g>
                 <g class="window-curtains">
                   <g class="curtain-left">
@@ -190,7 +244,7 @@
                     <path d="M290 4q-5 66 3 140M276 4q-4 65 6 140M263 4q0 62 11 140" stroke="white" stroke-opacity=".45" stroke-width="1.4"/>
                   </g>
                 </g>
-                <path d="M0 175h300v5H0Z" fill="#d8bea1"/>
+                <path d="M0 175h300v5H0Z" fill="#a96980"/>
                 <g class="window-plant">
                   <path d="M48 158v-24" stroke="#64866b" stroke-width="2" stroke-linecap="round"/>
                   <path d="M48 148q-17 0-13-14 14 0 13 14Zm0-9q0-16 12-17 7 12-12 17Z" fill="#84a589"/>
@@ -322,6 +376,50 @@
 
 <script>
 (() => {
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const hover = window.matchMedia('(hover: hover) and (pointer: fine)');
+  document.querySelectorAll('a[href]').forEach(link => {
+    link.addEventListener('pointerenter', event => {
+      if (motion.matches || !hover.matches || event.pointerType === 'touch') return;
+      const bounds = link.getBoundingClientRect();
+      const x = Math.min(Math.max(event.clientX, bounds.left), bounds.right);
+      const y = Math.min(Math.max(event.clientY, bounds.top), bounds.bottom);
+      [[-8, -6], [7, -10], [11, 3]].forEach(([dx, dy], index) => {
+        const glint = document.createElement('span');
+        glint.className = 'link-sparkle';
+        glint.setAttribute('aria-hidden', 'true');
+        glint.style.left = (x + dx) + 'px';
+        glint.style.top = (y + dy) + 'px';
+        glint.style.width = glint.style.height = (index === 1 ? 9 : 6) + 'px';
+        glint.style.setProperty('--drift-x', dx + 'px');
+        glint.style.setProperty('--drift-y', (dy - 8) + 'px');
+        document.body.appendChild(glint);
+        setTimeout(() => glint.remove(), 650);
+      });
+    });
+  });
+})();
+(() => {
+  const heading = document.querySelector('.typed-intro');
+  if (!heading || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const live = heading.querySelector('.typed-intro-live');
+  const letters = Array.from(live.textContent);
+  live.textContent = '';
+  heading.classList.add('is-typing');
+  let index = 0;
+  function typeNext() {
+    live.textContent += letters[index++];
+    if (index < letters.length) setTimeout(typeNext, 100);
+    else {
+      heading.classList.add('is-finished');
+      setTimeout(() => {
+        heading.classList.remove('is-typing', 'is-finished');
+      }, 2400);
+    }
+  }
+  setTimeout(typeNext, 150);
+})();
+(() => {
   const panel = document.getElementById('weather-window');
   const area = document.getElementById('weather-area');
   const status = document.getElementById('weather-status');
@@ -371,12 +469,16 @@
       return;
     }
     const text = forecast.forecast;
-    let mood = 'cloud';
-    if (/thunder/i.test(text)) { mood = 'rain';  }
-    else if (/rain|shower/i.test(text)) { mood = 'rain';  }
-    else if (/night/i.test(text)) { mood = 'night';  }
-    else if (/partly cloudy/i.test(text)) { mood = 'cloud'; }
-    else if (/fair|sunny/i.test(text)) { mood = 'fair';  }
+    let mood = 'overcast';
+    if (/thunder/i.test(text)) mood = 'storm';
+    else if (/heavy.*(rain|shower)/i.test(text)) mood = 'heavy-rain';
+    else if (/light.*(rain|shower)|drizzle/i.test(text)) mood = 'light-rain';
+    else if (/rain|shower/i.test(text)) mood = 'rain';
+    else if (/haze|hazy|mist|fog/i.test(text)) mood = 'haze';
+    else if (/wind/i.test(text)) mood = 'wind';
+    else if (/partly cloudy/i.test(text)) mood = /night/i.test(text) ? 'partly-night' : 'cloud';
+    else if (/cloudy|overcast/i.test(text)) mood = 'overcast';
+    else if (/fair|sunny|clear/i.test(text)) mood = /night/i.test(text) ? 'night' : 'fair';
     scene.dataset.mood = mood;
     status.textContent = text;
     meta.textContent = format(start) + '–' + format(end) + ' SGT';
