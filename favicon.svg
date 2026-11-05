@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <title>Alia’s cat icon</title>
+  <rect width="64" height="64" rx="15" fill="#fff3c4"/>
+  <path d="M35 52c12 3 22-3 22-13 0-7-8-9-10-3" fill="none" stroke="#963e5e" stroke-width="7" stroke-linecap="round"/>
+  <ellipse cx="28" cy="42" rx="13" ry="16" fill="#963e5e"/>
+  <path d="m16 25-2-15 12 8h5l12-8-2 16c-3 12-23 12-25-1Z" fill="#963e5e"/>
+  <path d="M15 54q13-5 27 0v3H15Z" fill="#963e5e"/>
+</svg>
