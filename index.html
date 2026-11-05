@@ -85,7 +85,13 @@
     .tag { display: inline-block; padding: 3px 9px; border: 1px solid var(--accent-line); border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-size: .75rem; font-weight: 600; line-height: 1.5; }
     h3 { margin: 8px 0 10px; font-size: 1.2rem; line-height: 1.25; letter-spacing: -.025em; }
     .project p { color: var(--muted); font-size: .93rem; }
-    .project-content > a { margin-top: auto; }
+    .project-content > p { margin-bottom: 26px; }
+    .project-footer { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; width: 100%; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); }
+    .featured .project-footer { border-top-color: #e9dfcf; }
+    .project-footer .tags { margin: 0; gap: 6px; }
+    .project-footer .tag { padding: 3px 9px; border-color: #f1dce5; background: #fff2f6; color: #963e5e; font-weight: 500; }
+    .project-footer > a { margin-left: auto; padding: 8px 0; text-align: right; }
+    .project-footer > a span { display: inline-block; }
     .project a { font-size: .92rem; font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 4px; }
     footer { padding: 34px 0 50px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
     @media (max-width: 760px) {
@@ -293,9 +299,11 @@
             <img src="images/tiktok.jpeg" alt="TikTok logo representing the video classification project">
             <div class="project-content">
               <h3>Classifying TikTok videos</h3>
-              <div class="tags"><span class="tag">Machine learning</span></div>
-              <p>Used statsmodels and scikit-learn to help distinguish claim-based from opinion-based videos for a more focused human-review workflow.</p>
-              <a href="https://github.com/AliaAbdulAziz/TikTokClassification" target="_blank" rel="noopener">View project</a>
+              <p>Classifies TikTok videos as claims or opinions to support a more focused human-review workflow.</p>
+              <div class="project-footer">
+                <div class="tags"><span class="tag">Machine learning</span></div>
+                <a href="https://github.com/AliaAbdulAziz/TikTokClassification" target="_blank" rel="noopener">View project <span aria-hidden="true">↗</span></a>
+              </div>
             </div>
           </article>
 
@@ -303,9 +311,11 @@
             <img src="images/Singapore-Public-Housing.jpg" alt="High-rise housing buildings representing the data-cleaning project">
             <div class="project-content">
               <h3>Cleaning housing data</h3>
-              <div class="tags"><span class="tag">SQL</span><span class="tag">Data quality</span></div>
               <p>Transformed raw housing records in SQL Server into a more consistent, analysis-ready dataset.</p>
-              <a href="https://github.com/AliaAbdulAziz/Nashville-Housing-SQL" target="_blank" rel="noopener">View project</a>
+              <div class="project-footer">
+                <div class="tags"><span class="tag">SQL</span><span class="tag">Data quality</span></div>
+                <a href="https://github.com/AliaAbdulAziz/Nashville-Housing-SQL" target="_blank" rel="noopener">View project <span aria-hidden="true">↗</span></a>
+              </div>
             </div>
           </article>
 
@@ -313,9 +323,11 @@
             <img src="images/tableau.png" alt="Tableau logo representing interactive dashboard projects">
             <div class="project-content">
               <h3>Interactive dashboards</h3>
-              <div class="tags"><span class="tag">Tableau</span><span class="tag">Dashboards</span></div>
               <p>A collection of visual tools designed to make performance and trend questions easier to explore.</p>
-              <a href="https://public.tableau.com/app/profile/hungry.alia/vizzes" target="_blank" rel="noopener">Explore dashboards</a>
+              <div class="project-footer">
+                <div class="tags"><span class="tag">Tableau</span><span class="tag">Dashboards</span></div>
+                <a href="https://public.tableau.com/app/profile/hungry.alia/vizzes" target="_blank" rel="noopener">Explore dashboards <span aria-hidden="true">↗</span></a>
+              </div>
             </div>
           </article>
         </div>
