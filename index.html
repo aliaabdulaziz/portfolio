@@ -30,7 +30,7 @@
     .nav-directory { display: flex; align-items: center; gap: 32px; }
     .nav-social { display: flex; align-items: center; gap: 4px; }
     .nav-social a { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; color: var(--muted); border-radius: 4px; }
-    .nav-social a:hover { color: var(--accent); background: var(--accent-soft); }
+    .nav-social a:hover { color: var(--accent); }
     .nav-social svg { width: 20px; height: 20px; }
     #work, #research { scroll-margin-top: 96px; }
     .name { text-decoration: none; font-size: 1rem; font-weight: 700; letter-spacing: -.02em; }
@@ -145,7 +145,7 @@
 
     a:hover, .nav-links a:hover { color: var(--accent); }
     .button:hover { border-color: var(--accent); }
-    .button.primary:hover { background: var(--accent); color: #fff; }
+
     .weather-panel select:hover { border-bottom-color: var(--accent); }
     .typed-intro { position: relative; display: inline-block; white-space: nowrap; }
     .typed-intro-reserve { visibility: hidden; }
@@ -154,15 +154,8 @@
     #research .section-heading { margin-bottom: 8px; }
     #research .research-intro > p:first-child { margin-top: 0; }
 
-    .link-sparkle { position: fixed; z-index: 200; width: 9px; height: 9px; background: #cf7698; pointer-events: none; clip-path: polygon(50% 0, 61% 38%, 100% 50%, 61% 62%, 50% 100%, 39% 62%, 0 50%, 39% 38%); animation: link-glint 600ms ease-out forwards; }
     .typed-intro.is-finished .typed-intro-live::after { animation: typing-finish-blink .8s step-end 3; }
     @keyframes typing-finish-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-    @keyframes link-glint {
-      0% { opacity: 0; transform: translate(-50%, -50%) scale(.25) rotate(0deg); }
-      25% { opacity: .9; }
-      100% { opacity: 0; transform: translate(calc(-50% + var(--drift-x)), calc(-50% + var(--drift-y))) scale(.1) rotate(60deg); }
-    }
-    @media (prefers-reduced-motion: reduce) { .link-sparkle { display: none; animation: none; } }
 
     .sky-extra-rain, .sky-lightning, .sky-wind, .sky-haze { display: none; }
     .weather-scene[data-mood="overcast"] { background: #e1e6ea; }
@@ -185,6 +178,16 @@
     .weather-scene[data-mood="haze"] .sky-haze { display: block; animation: cloud-drift 9s ease-in-out infinite alternate; }
     @keyframes storm-bolt { 0%, 100% { transform: translateY(0); opacity: .65; } 50% { transform: translateY(3px); opacity: 1; } }
     @media (prefers-reduced-motion: reduce) { .weather-art * { animation: none !important; } }
+
+    a { position: relative; isolation: isolate; }
+    a:not(.button)::before { content: ""; position: absolute; z-index: -1; pointer-events: none; inset: -4px -6px; border-radius: 48% 52% 44% 56%; background: var(--accent-soft); transform: scale(0); transition: transform 850ms cubic-bezier(.2,1.5,.4,1); }
+    a:not(.button):is(:hover, :focus-visible)::before { transform: scale(1.04); }
+    .nav-social a::before { inset: 0; }
+    .button { overflow: hidden; transition: color .3s, border-color .3s; }
+    .button::before { content: ""; position: absolute; z-index: -1; pointer-events: none; inset: 0; border-radius: inherit; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 700ms cubic-bezier(.2,.7,.2,1); }
+    .button:is(:hover, :focus-visible)::before { transform: scaleX(1); }
+    .button:is(:hover, :focus-visible) { color: #fff; border-color: var(--accent); }
+    @media (prefers-reduced-motion: reduce) { a::before, .button { transition: none !important; } }
   </style>
 </head>
 <body>
@@ -375,30 +378,7 @@
   </div>
 
 <script>
-(() => {
-  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const hover = window.matchMedia('(hover: hover) and (pointer: fine)');
-  document.querySelectorAll('a[href]').forEach(link => {
-    link.addEventListener('pointerenter', event => {
-      if (motion.matches || !hover.matches || event.pointerType === 'touch') return;
-      const bounds = link.getBoundingClientRect();
-      const x = Math.min(Math.max(event.clientX, bounds.left), bounds.right);
-      const y = Math.min(Math.max(event.clientY, bounds.top), bounds.bottom);
-      [[-8, -6], [7, -10], [11, 3]].forEach(([dx, dy], index) => {
-        const glint = document.createElement('span');
-        glint.className = 'link-sparkle';
-        glint.setAttribute('aria-hidden', 'true');
-        glint.style.left = (x + dx) + 'px';
-        glint.style.top = (y + dy) + 'px';
-        glint.style.width = glint.style.height = (index === 1 ? 9 : 6) + 'px';
-        glint.style.setProperty('--drift-x', dx + 'px');
-        glint.style.setProperty('--drift-y', (dy - 8) + 'px');
-        document.body.appendChild(glint);
-        setTimeout(() => glint.remove(), 650);
-      });
-    });
-  });
-})();
+
 (() => {
   const heading = document.querySelector('.typed-intro');
   if (!heading || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
