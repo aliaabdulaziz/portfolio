@@ -20,7 +20,7 @@
   <meta name="twitter:image:alt" content="Hi, I’m Alia. Data Analyst in Singapore. Take a look around. aliaaziz.work">
   <link rel="canonical" href="https://aliaaziz.work/">
   <style>
-    :root { --ink: #17212b; --muted: #5d6873; --line: #dde3e8; --surface: #f7f9fa; --accent: #a83e65; --accent-soft: #fff2f6; --accent-line: #eed0dc; --sill: #a96980; }
+    :root { --ink: #17212b; --muted: #5d6873; --line: #dde3e8; --surface: #f7f9fa; --accent: #a83e65; --accent-soft: #fff2f6; --accent-line: #eed0dc; --sill: #a96980; --butter: #fff3c4; --butter-soft: #fff9e7; --sage: #8fa58b; --sage-light: #b5c4a8; --sage-deep: #70886b; }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { margin: 0; color: var(--ink); background: #fff; font: 16px/1.6 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
@@ -60,7 +60,7 @@
     .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .project { display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
     .project.featured { border-color: var(--accent); }
-    .project.featured .project-content { background: #fffafd; }
+    .project.featured .project-content { background: var(--butter-soft); }
     .other-projects { margin-top: 36px; }
     .other-projects summary { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; padding: 16px 0; list-style: none; color: var(--accent); }
     .other-projects summary::-webkit-details-marker { display: none; }
@@ -101,7 +101,7 @@
     .weather-scene { position: relative; height: 168px; border: 6px solid #e8c4d0; border-radius: 100px 100px 10px 10px; background: #edf3f3; overflow: hidden; margin-bottom: 16px; box-shadow: 0 4px 0 var(--sill), inset 0 0 0 2px rgb(255 255 255 / 45%); }
     .weather-art { width: 100%; height: 100%; display: block; }
     .sky-sun, .sky-moon, .sky-rain { display: none; }
-    .weather-scene[data-mood="fair"], .weather-scene[data-mood="cloud"] { background: #fff3d9; }
+    .weather-scene[data-mood="fair"], .weather-scene[data-mood="cloud"] { background: var(--butter); }
     .weather-scene[data-mood="fair"] .sky-sun, .weather-scene[data-mood="cloud"] .sky-sun { display: block; animation: sun-bob 5s ease-in-out infinite; }
     .weather-scene[data-mood="fair"] .cloud-back { opacity: .3; }
     .weather-scene[data-mood="rain"] { background: #dce7ef; }
@@ -236,7 +236,7 @@
                 <path class="sky-lightning" d="m153 117-13 22h12l-8 21 26-30h-14l9-13Z" fill="#efc66b" stroke="#dbaf53" stroke-width=".8"/>
                 <g class="sky-wind" stroke="#a0b1bb" stroke-width="2" stroke-linecap="round"><path d="M68 130h32q12 0 10-8m-30 20h42m52 10h43q12 0 10-8"/></g>
                 <g class="sky-haze" stroke="#d5c8b7" stroke-width="7" stroke-linecap="round" opacity=".65"><path d="M60 129h179M78 143h151M64 157h173"/></g>
-                <g class="sky-hills"><path d="M0 174q55-35 111 0t110 0 79 0v26H0Z" fill="#9bb9a2"/><path d="M0 186q80-31 161-5t139-2v21H0Z" fill="#739b86"/></g>
+                <g class="sky-hills"><path d="M0 174q55-35 111 0t110 0 79 0v26H0Z" fill="var(--sage-light)"/><path d="M0 186q80-31 161-5t139-2v21H0Z" fill="var(--sage)"/></g>
                 <g class="window-curtains">
                   <g class="curtain-left">
                     <path d="M0 0h43c-1 46-5 92-15 149q-8 6-15 0t-13 0Z" fill="white" fill-opacity=".46"/>
@@ -249,8 +249,8 @@
                 </g>
                 <path d="M0 175h300v5H0Z" fill="#a96980"/>
                 <g class="window-plant">
-                  <path d="M48 158v-24" stroke="#64866b" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M48 148q-17 0-13-14 14 0 13 14Zm0-9q0-16 12-17 7 12-12 17Z" fill="#84a589"/>
+                  <path d="M48 158v-24" stroke="var(--sage-deep)" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M48 148q-17 0-13-14 14 0 13 14Zm0-9q0-16 12-17 7 12-12 17Z" fill="var(--sage)"/>
                   <path d="M37 155h24l-4 21H41Z" fill="#cc967e"/>
                   <rect x="35" y="153" width="28" height="5" rx="2" fill="#ddb09a"/>
                   <path d="M44 164q5 4 10 0" stroke="#a96f59" stroke-width="1.5" fill="none" stroke-linecap="round"/>
