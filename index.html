@@ -39,18 +39,22 @@
     .hero { display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 56px; align-items: center; padding: 60px 0 52px; }
     .hero-copy { min-width: 0; }
     .research-intro { max-width: 720px; color: var(--muted); }
-    .publications { list-style: none; padding: 0; margin: 30px 0 0; }
-    .publications li { border-top: 1px solid var(--line); padding: 22px 0; }
-    .publications a { font-weight: 650; text-underline-offset: 4px; }
-    .publication-meta { display: block; color: var(--muted); font-size: .85rem; margin-top: 8px; }
+    .publications { list-style: none; padding: 0; margin: 32px 0 0; max-width: 850px; }
+    .publications li { border-bottom: 1px solid var(--line); padding: 22px 0 26px; }
+    .publications li:first-child { padding-top: 0; }
+    .publications a { display: flex; align-items: flex-start; gap: 20px; justify-content: space-between; font-size: 1.05rem; line-height: 1.5; font-weight: 600; text-decoration: none; }
+    .publication-title { max-width: 70ch; }
+    .publication-arrow { flex-shrink: 0; color: var(--accent); font-weight: 400; transition: transform .25s; }
+    .publications a:hover .publication-arrow { transform: translate(2px, -2px); }
+    .publication-meta { display: block; color: var(--muted); font-size: .8rem; margin-bottom: 8px; }
     .eyebrow { color: var(--accent); font-size: .78rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
     h1, h2, h3, p { margin-top: 0; }
     h1 { max-width: 720px; margin: 15px 0 20px; font-size: clamp(2.65rem, 5.5vw, 4.65rem); line-height: 1.02; letter-spacing: -.06em; }
     .intro { max-width: 630px; color: var(--muted); font-size: 1.15rem; }
     .credentials { color: var(--muted); font-size: .85rem; margin: 22px 0 0; }
     .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-    .button { display: inline-block; padding: 11px 17px; border: 1px solid var(--ink); border-radius: 5px; font-weight: 650; font-size: .92rem; text-decoration: none; }
-    .button.primary { background: var(--ink); color: white; }
+    .button { display: inline-block; padding: 11px 17px; border: 1px solid var(--accent); border-radius: 5px; font-weight: 650; font-size: .92rem; text-decoration: none; }
+    .button.primary { background: transparent; color: var(--accent); }
     .section { padding: 60px 0 84px; border-top: 1px solid var(--line); }
     .section-heading { display: flex; justify-content: space-between; gap: 20px; align-items: baseline; margin-bottom: 28px; }
     h2 { margin-bottom: 0; font-size: clamp(1.75rem, 3vw, 2.45rem); letter-spacing: -.045em; }
@@ -59,7 +63,7 @@
     #work .section-heading p { margin-top: 8px; }
     .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .project { display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
-    .project.featured { border-color: var(--accent); }
+    .project.featured { border-color: #d4a3b6; }
     .project.featured .project-content { background: var(--butter-soft); }
     .other-projects { margin-top: 36px; }
     .other-projects summary { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; padding: 16px 0; list-style: none; color: var(--accent); }
@@ -247,13 +251,12 @@
                     <path d="M290 4q-5 66 3 140M276 4q-4 65 6 140M263 4q0 62 11 140" stroke="white" stroke-opacity=".45" stroke-width="1.4"/>
                   </g>
                 </g>
-                <path d="M0 175h300v5H0Z" fill="#a96980"/>
                 <g class="window-plant">
                   <path d="M48 158v-24" stroke="var(--sage-deep)" stroke-width="2" stroke-linecap="round"/>
                   <path d="M48 148q-17 0-13-14 14 0 13 14Zm0-9q0-16 12-17 7 12-12 17Z" fill="var(--sage)"/>
-                  <path d="M37 155h24l-4 21H41Z" fill="#cc967e"/>
-                  <rect x="35" y="153" width="28" height="5" rx="2" fill="#ddb09a"/>
-                  <path d="M44 164q5 4 10 0" stroke="#a96f59" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                  <path d="M37 155h24l-4 21H41Z" fill="#cb99a7"/>
+                  <rect x="35" y="153" width="28" height="5" rx="2" fill="#e0b3c2"/>
+                  <path d="M44 164q5 4 10 0" stroke="#a86d84" stroke-width="1.5" fill="none" stroke-linecap="round"/>
                 </g>
                 <g class="window-cat">
                   <path class="cat-tail" d="M235 172C254 177 274 169 271 154c-2-9-12-8-12-1" fill="none" stroke="var(--cat-colour)" stroke-width="8" stroke-linecap="round"/>
@@ -356,16 +359,16 @@
         </div>
         <ul class="publications">
           <li>
-            <a href="https://doi.org/10.1016/j.diabres.2023.110944" target="_blank" rel="noopener">Trends in all-cause mortality among adults with diagnosed type 2 diabetes in West Malaysia: 2010–2019</a>
             <span class="publication-meta">Diabetes Research and Clinical Practice · 2023</span>
+            <a href="https://doi.org/10.1016/j.diabres.2023.110944" target="_blank" rel="noopener"><span class="publication-title">Trends in all-cause mortality among adults with diagnosed type 2 diabetes in West Malaysia: 2010–2019</span><span class="publication-arrow" aria-hidden="true">↗</span></a>
           </li>
           <li>
-            <a href="https://doi.org/10.1016/j.socscimed.2023.116426" target="_blank" rel="noopener">Health poverty among people with type 2 diabetes mellitus (T2DM) in Malaysia</a>
             <span class="publication-meta">Social Science &amp; Medicine · 2024</span>
+            <a href="https://doi.org/10.1016/j.socscimed.2023.116426" target="_blank" rel="noopener"><span class="publication-title">Health poverty among people with type 2 diabetes mellitus (T2DM) in Malaysia</span><span class="publication-arrow" aria-hidden="true">↗</span></a>
           </li>
           <li>
-            <a href="https://doi.org/10.1111/1753-0407.13346" target="_blank" rel="noopener">Effects of mobile health interventions on health-related outcomes in older adults with type 2 diabetes: A systematic review and meta-analysis</a>
             <span class="publication-meta">Journal of Diabetes · 2023</span>
+            <a href="https://doi.org/10.1111/1753-0407.13346" target="_blank" rel="noopener"><span class="publication-title">Effects of mobile health interventions on health-related outcomes in older adults with type 2 diabetes: A systematic review and meta-analysis</span><span class="publication-arrow" aria-hidden="true">↗</span></a>
           </li>
         </ul>
       </section>
