@@ -155,6 +155,8 @@
     #research .research-intro > p:first-child { margin-top: 0; }
 
     .link-sparkle { position: fixed; z-index: 200; width: 9px; height: 9px; background: #cf7698; pointer-events: none; clip-path: polygon(50% 0, 61% 38%, 100% 50%, 61% 62%, 50% 100%, 39% 62%, 0 50%, 39% 38%); animation: link-glint 600ms ease-out forwards; }
+    .typed-intro.is-finished .typed-intro-live::after { animation: typing-finish-blink .8s step-end 3; }
+    @keyframes typing-finish-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
     @keyframes link-glint {
       0% { opacity: 0; transform: translate(-50%, -50%) scale(.25) rotate(0deg); }
       25% { opacity: .9; }
@@ -382,7 +384,12 @@
   function typeNext() {
     live.textContent += letters[index++];
     if (index < letters.length) setTimeout(typeNext, 100);
-    else heading.classList.remove('is-typing');
+    else {
+      heading.classList.add('is-finished');
+      setTimeout(() => {
+        heading.classList.remove('is-typing', 'is-finished');
+      }, 2400);
+    }
   }
   setTimeout(typeNext, 150);
 })();
