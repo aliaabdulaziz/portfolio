@@ -73,7 +73,8 @@
     .other-projects summary strong { font-size: 1rem; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
     .other-projects summary:hover { color: #852c4d; }
     .other-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; padding: 8px 0 0; }
-    .other-grid article { border-top: 1px solid var(--line); padding-top: 20px; }
+    .other-grid article { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; border-top: 1px solid var(--line); padding-top: 20px; }
+    .other-grid .project-footer { border-top: 0; padding-top: 0; }
     .other-grid p { font-size: .93rem; color: var(--muted); }
     .other-grid a { color: var(--accent); font-size: .9rem; font-weight: 650; text-underline-offset: 4px; }
     a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
@@ -342,27 +343,35 @@
           <div class="other-grid">
             <article>
               <h3>Movie data exploration</h3>
-              <div class="tags"><span class="tag">Python</span><span class="tag">Exploratory analysis</span></div>
               <p>I explored relationships between movie budgets, gross earnings, and genres using pandas, seaborn, and Matplotlib.</p>
-              <a href="https://github.com/aliaabdulaziz/Movie-EDA" target="_blank" rel="noopener">Read the analysis on GitHub</a>
+              <div class="project-footer">
+                <div class="tags"><span class="tag">Python</span><span class="tag">Exploratory analysis</span></div>
+                <a href="https://github.com/aliaabdulaziz/Movie-EDA" target="_blank" rel="noopener">View project <span aria-hidden="true">↗</span></a>
+              </div>
             </article>
             <article>
               <h3>Bike sales dashboard</h3>
-              <div class="tags"><span class="tag">Excel</span><span class="tag">Dashboarding</span></div>
               <p>I prepared customer data, created age brackets and pivot tables, and built an interactive dashboard to explore bike-sales patterns.</p>
-              <a href="https://onedrive.live.com/embed?resid=50F3C3FDEAC02B4F%21473&amp;authkey=%21ANTTs7Lu6NZ6WEM&amp;em=2&amp;wdHideGridlines=True" target="_blank" rel="noopener">Open the interactive workbook</a>
+              <div class="project-footer">
+                <div class="tags"><span class="tag">Excel</span><span class="tag">Dashboarding</span></div>
+                <a href="https://onedrive.live.com/embed?resid=50F3C3FDEAC02B4F%21473&amp;authkey=%21ANTTs7Lu6NZ6WEM&amp;em=2&amp;wdHideGridlines=True" target="_blank" rel="noopener">Explore <span aria-hidden="true">↗</span></a>
+              </div>
             </article>
             <article>
               <h3>COVID-19 data exploration</h3>
-              <div class="tags"><span class="tag">SQL</span><span class="tag">Exploratory analysis</span></div>
               <p>I used SQL Server joins, aggregations, and window functions to explore historical cases, deaths, and vaccination data.</p>
-              <a href="https://github.com/aliaabdulaziz/covid-project" target="_blank" rel="noopener">Read the SQL project on GitHub</a>
+              <div class="project-footer">
+                <div class="tags"><span class="tag">SQL</span><span class="tag">Exploratory analysis</span></div>
+                <a href="https://github.com/aliaabdulaziz/covid-project" target="_blank" rel="noopener">View project <span aria-hidden="true">↗</span></a>
+              </div>
             </article>
             <article>
               <h3>TCD product scraper</h3>
-              <div class="tags"><span class="tag">Python</span><span class="tag">Web scraping</span></div>
               <p>I used requests and BeautifulSoup to collect a product’s name, price, and review count into dated CSV records.</p>
-              <a href="https://github.com/aliaabdulaziz/TCD-Web-Scraping" target="_blank" rel="noopener">Read the scraper project on GitHub</a>
+              <div class="project-footer">
+                <div class="tags"><span class="tag">Python</span><span class="tag">Web scraping</span></div>
+                <a href="https://github.com/aliaabdulaziz/TCD-Web-Scraping" target="_blank" rel="noopener">View project <span aria-hidden="true">↗</span></a>
+              </div>
             </article>
           </div>
         </details>
