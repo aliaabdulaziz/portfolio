@@ -108,8 +108,10 @@
 
     .weather-window { max-width: 320px; width: 100%; justify-self: end; }
     .weather-panel { padding-top: 0; }
-    .weather-scene { position: relative; height: 168px; border: 6px solid #e8c4d0; border-radius: 100px 100px 10px 10px; background: #edf3f3; overflow: hidden; margin-bottom: 16px; box-shadow: 0 4px 0 var(--sill), inset 0 0 0 2px rgb(255 255 255 / 45%); }
-    .weather-art { width: 100%; height: 100%; display: block; }
+    .weather-scene { position: relative; height: 168px; border: 6px solid #e8c4d0; border-radius: 100px 100px 10px 10px; background: #edf3f3; overflow: visible; margin-bottom: 16px; box-shadow: 0 4px 0 var(--sill), inset 0 0 0 2px rgb(255 255 255 / 45%); }
+    .weather-art { width: 100%; height: 100%; display: block; border-radius: inherit; overflow: hidden; }
+    .window-foreground { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; pointer-events: none; }
+    .cat-switch { z-index: 2; }
     .sky-sun, .sky-moon, .sky-rain { display: none; }
     .weather-scene[data-mood="fair"], .weather-scene[data-mood="cloud"] { background: var(--butter); }
     .weather-scene[data-mood="fair"] .sky-sun, .weather-scene[data-mood="cloud"] .sky-sun { display: block; animation: sun-bob 5s ease-in-out infinite; }
@@ -122,7 +124,7 @@
     .weather-scene .cloud-back { animation-delay: -3s; }
     .weather-caption { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
     .weather-panel .weather-location-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-    .weather-window[data-paused] .weather-art * { animation-play-state: paused !important; }
+    .weather-window[data-paused] :is(.weather-art, .window-foreground) * { animation-play-state: paused !important; }
     .window-cat { fill: var(--cat-colour, #24272b); }
     .weather-scene { --cat-colour: #24272b; --cat-stripe: #9b6845; }
     .weather-scene[data-cat="orange"] { --cat-colour: #d68a46; }
@@ -142,7 +144,7 @@
     @keyframes cloud-drift { from { transform: translateX(-5px); } to { transform: translateX(6px); } }
     @keyframes sun-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
     @keyframes rain-fall { from { transform: translateY(-4px); opacity: .4; } to { transform: translateY(6px); opacity: 1; } }
-    @media (prefers-reduced-motion: reduce) { .weather-art * { animation: none !important; } .weather-motion { display: none; } }
+    @media (prefers-reduced-motion: reduce) { :is(.weather-art, .window-foreground) * { animation: none !important; } .weather-motion { display: none; } }
     .weather-panel label { display: block; margin-bottom: 5px; font-size: .8rem; color: var(--muted); }
     .weather-panel select { min-width: 0; width: 100%; max-width: 100%; font: inherit; font-size: .85rem; font-weight: 600; color: var(--ink); background: transparent; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; padding: 6px 18px 6px 0; }
     .weather-status { font-size: .85rem; margin: 0; color: var(--muted); }
@@ -187,7 +189,7 @@
     .weather-scene[data-mood="haze"] { background: #eee6d9; }
     .weather-scene[data-mood="haze"] .sky-haze { display: block; animation: cloud-drift 9s ease-in-out infinite alternate; }
     @keyframes storm-bolt { 0%, 100% { transform: translateY(0); opacity: .65; } 50% { transform: translateY(3px); opacity: 1; } }
-    @media (prefers-reduced-motion: reduce) { .weather-art * { animation: none !important; } }
+    @media (prefers-reduced-motion: reduce) { :is(.weather-art, .window-foreground) * { animation: none !important; } }
 
     a { position: relative; isolation: isolate; }
     a:not(.button)::before { content: ""; position: absolute; z-index: -1; pointer-events: none; inset: -4px -6px; border-radius: 48% 52% 44% 56%; background: var(--accent-soft); transform: scale(0); transition: transform 850ms cubic-bezier(.2,1.5,.4,1); }
@@ -251,6 +253,8 @@
                   <rect x="1" y="1" width="298" height="178" rx="3" stroke="#dce7ef" stroke-width="2"/>
                   <path d="M0 176h300v4H0Z" fill="#dce7ef"/>
                 </g>
+              </svg>
+              <svg class="window-foreground" viewBox="0 0 300 180" preserveAspectRatio="xMidYMax slice" fill="none" aria-hidden="true" focusable="false">
                 <g class="window-curtains">
                   <g class="curtain-left">
                     <path d="M8 0h43c-1 55-5 112-15 169q-8 7-15 0t-13 0Z" fill="white" fill-opacity=".58"/>
