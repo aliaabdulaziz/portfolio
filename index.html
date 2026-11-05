@@ -20,13 +20,13 @@
   <meta name="twitter:image:alt" content="Hi, I’m Alia. Data Analyst in Singapore. Take a look around. aliaaziz.work">
   <link rel="canonical" href="https://aliaaziz.work/">
   <style>
-    :root { --ink: #17212b; --muted: #5d6873; --line: #dde3e8; --surface: #f7f9fa; --accent: #a83e65; --accent-soft: #fff2f6; --accent-line: #eed0dc; --sill: #a96980; --butter: #fff3c4; --butter-soft: #fff9e7; --sage: #8fa58b; --sage-light: #b5c4a8; --sage-deep: #70886b; }
+    :root { --page: #fffdf9; --ink: #17212b; --muted: #5d6873; --line: #dde3e8; --surface: #f7f9fa; --accent: #a83e65; --accent-soft: #fff2f6; --accent-line: #eed0dc; --sill: #a96980; --butter: #fff3c4; --butter-soft: #fff9e7; --sage: #8fa58b; --sage-light: #b5c4a8; --sage-deep: #70886b; }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { margin: 0; color: var(--ink); background: #fff; font: 16px/1.6 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    body { margin: 0; color: var(--ink); background: var(--page); font: 16px/1.6 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
     a { color: inherit; }
     .wrap { width: min(1120px, calc(100% - 40px)); margin: auto; }
-    nav { position: sticky; top: 0; z-index: 100; background: #fff; height: 76px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+    nav { position: sticky; top: 0; z-index: 100; background: var(--page); height: 76px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
     .nav-directory { display: flex; align-items: center; gap: 32px; }
     .nav-social { display: flex; align-items: center; gap: 4px; }
     .nav-social a { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; color: var(--muted); border-radius: 4px; }
@@ -39,18 +39,19 @@
     .hero { display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 56px; align-items: center; padding: 60px 0 52px; }
     .hero-copy { min-width: 0; }
     .research-intro { max-width: 720px; color: var(--muted); }
-    .publications { list-style: none; padding: 0; margin: 30px 0 0; }
-    .publications li { border-top: 1px solid var(--line); padding: 22px 0; }
-    .publications a { font-weight: 650; text-underline-offset: 4px; }
-    .publication-meta { display: block; color: var(--muted); font-size: .85rem; margin-top: 8px; }
+    .publications { list-style: none; padding: 0; margin: 32px 0 0; max-width: 850px; display: grid; gap: 16px; }
+    .publication-card { padding: clamp(20px, 3vw, 28px); border: 1px solid var(--line); border-radius: 8px; background: #fff; min-width: 0; }
+    .publication-card h3 { margin: 0 0 10px; font-size: 1.15rem; line-height: 1.45; max-width: 70ch; }
+    .publication-meta { color: var(--muted); font-size: .85rem; margin: 0 0 18px; }
+    .publication-card a { display: inline-block; font-size: .92rem; font-weight: 700; text-underline-offset: 4px; }
     .eyebrow { color: var(--accent); font-size: .78rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
     h1, h2, h3, p { margin-top: 0; }
     h1 { max-width: 720px; margin: 15px 0 20px; font-size: clamp(2.65rem, 5.5vw, 4.65rem); line-height: 1.02; letter-spacing: -.06em; }
     .intro { max-width: 630px; color: var(--muted); font-size: 1.15rem; }
     .credentials { color: var(--muted); font-size: .85rem; margin: 22px 0 0; }
     .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-    .button { display: inline-block; padding: 11px 17px; border: 1px solid var(--ink); border-radius: 5px; font-weight: 650; font-size: .92rem; text-decoration: none; }
-    .button.primary { background: var(--ink); color: white; }
+    .button { display: inline-block; padding: 11px 17px; border: 1px solid var(--accent); border-radius: 5px; font-weight: 650; font-size: .92rem; text-decoration: none; }
+    .button.primary { background: transparent; color: var(--accent); }
     .section { padding: 60px 0 84px; border-top: 1px solid var(--line); }
     .section-heading { display: flex; justify-content: space-between; gap: 20px; align-items: baseline; margin-bottom: 28px; }
     h2 { margin-bottom: 0; font-size: clamp(1.75rem, 3vw, 2.45rem); letter-spacing: -.045em; }
@@ -59,7 +60,7 @@
     #work .section-heading p { margin-top: 8px; }
     .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .project { display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
-    .project.featured { border-color: var(--accent); }
+    .project.featured { border-color: #d4a3b6; }
     .project.featured .project-content { background: var(--butter-soft); }
     .other-projects { margin-top: 36px; }
     .other-projects summary { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; padding: 16px 0; list-style: none; color: var(--accent); }
@@ -68,8 +69,9 @@
     .other-projects[open] summary::before { content: "−"; }
     .other-projects summary strong { font-size: 1rem; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
     .other-projects summary:hover { color: #852c4d; }
-    .other-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; padding: 8px 0 0; }
-    .other-grid article { border-top: 1px solid var(--line); padding-top: 20px; }
+    .other-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 48px; row-gap: 32px; padding: 8px 0 0; }
+    .other-grid article { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; border-top: 1px solid var(--line); padding-top: 20px; }
+    .other-grid .project-footer { border-top: 0; padding-top: 0; }
     .other-grid p { font-size: .93rem; color: var(--muted); }
     .other-grid a { color: var(--accent); font-size: .9rem; font-weight: 650; text-underline-offset: 4px; }
     a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
@@ -77,10 +79,18 @@
     .project img { display: block; width: 100%; height: 190px; object-fit: cover; background: var(--surface); }
     .project-content { display: flex; flex-direction: column; align-items: flex-start; flex: 1; padding: 22px; }
     .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+    .project-content h3 { margin-top: 0; }
     .tag { display: inline-block; padding: 3px 9px; border: 1px solid var(--accent-line); border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-size: .75rem; font-weight: 600; line-height: 1.5; }
     h3 { margin: 8px 0 10px; font-size: 1.2rem; line-height: 1.25; letter-spacing: -.025em; }
     .project p { color: var(--muted); font-size: .93rem; }
-    .project-content > a { margin-top: auto; }
+    .project-content > p { margin-bottom: 26px; }
+    .project-footer { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; width: 100%; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); }
+    .featured .project-footer { border-top-color: #e9dfcf; }
+    .project-footer .tags { margin: 0; gap: 6px; }
+    .project-footer .tag { padding: 3px 9px; border-color: #f1dce5; background: #fff2f6; color: #963e5e; font-weight: 500; }
+    .project-footer > a { margin-left: auto; padding: 8px 0; text-align: right; }
+    .project-footer > a, .publication-card a { color: var(--accent); }
+    .project-footer > a:is(:hover, :focus-visible), .publication-card a:is(:hover, :focus-visible) { color: #852c4d; }
     .project a { font-size: .92rem; font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 4px; }
     footer { padding: 34px 0 50px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
     @media (max-width: 760px) {
@@ -98,8 +108,10 @@
 
     .weather-window { max-width: 320px; width: 100%; justify-self: end; }
     .weather-panel { padding-top: 0; }
-    .weather-scene { position: relative; height: 168px; border: 6px solid #e8c4d0; border-radius: 100px 100px 10px 10px; background: #edf3f3; overflow: hidden; margin-bottom: 16px; box-shadow: 0 4px 0 var(--sill), inset 0 0 0 2px rgb(255 255 255 / 45%); }
-    .weather-art { width: 100%; height: 100%; display: block; }
+    .weather-scene { position: relative; height: 168px; border: 6px solid #e8c4d0; border-radius: 100px 100px 10px 10px; background: #edf3f3; overflow: visible; margin-bottom: 16px; box-shadow: 0 4px 0 var(--sill), inset 0 0 0 2px rgb(255 255 255 / 45%); }
+    .weather-art { width: 100%; height: 100%; display: block; border-radius: inherit; overflow: hidden; }
+    .window-foreground { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; pointer-events: none; }
+    .cat-switch { z-index: 2; }
     .sky-sun, .sky-moon, .sky-rain { display: none; }
     .weather-scene[data-mood="fair"], .weather-scene[data-mood="cloud"] { background: var(--butter); }
     .weather-scene[data-mood="fair"] .sky-sun, .weather-scene[data-mood="cloud"] .sky-sun { display: block; animation: sun-bob 5s ease-in-out infinite; }
@@ -112,7 +124,7 @@
     .weather-scene .cloud-back { animation-delay: -3s; }
     .weather-caption { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
     .weather-panel .weather-location-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-    .weather-window[data-paused] .weather-art * { animation-play-state: paused !important; }
+    .weather-window[data-paused] :is(.weather-art, .window-foreground) * { animation-play-state: paused !important; }
     .window-cat { fill: var(--cat-colour, #24272b); }
     .weather-scene { --cat-colour: #24272b; --cat-stripe: #9b6845; }
     .weather-scene[data-cat="orange"] { --cat-colour: #d68a46; }
@@ -132,7 +144,7 @@
     @keyframes cloud-drift { from { transform: translateX(-5px); } to { transform: translateX(6px); } }
     @keyframes sun-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
     @keyframes rain-fall { from { transform: translateY(-4px); opacity: .4; } to { transform: translateY(6px); opacity: 1; } }
-    @media (prefers-reduced-motion: reduce) { .weather-art * { animation: none !important; } .weather-motion { display: none; } }
+    @media (prefers-reduced-motion: reduce) { :is(.weather-art, .window-foreground) * { animation: none !important; } .weather-motion { display: none; } }
     .weather-panel label { display: block; margin-bottom: 5px; font-size: .8rem; color: var(--muted); }
     .weather-panel select { min-width: 0; width: 100%; max-width: 100%; font: inherit; font-size: .85rem; font-weight: 600; color: var(--ink); background: transparent; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; padding: 6px 18px 6px 0; }
     .weather-status { font-size: .85rem; margin: 0; color: var(--muted); }
@@ -177,7 +189,7 @@
     .weather-scene[data-mood="haze"] { background: #eee6d9; }
     .weather-scene[data-mood="haze"] .sky-haze { display: block; animation: cloud-drift 9s ease-in-out infinite alternate; }
     @keyframes storm-bolt { 0%, 100% { transform: translateY(0); opacity: .65; } 50% { transform: translateY(3px); opacity: 1; } }
-    @media (prefers-reduced-motion: reduce) { .weather-art * { animation: none !important; } }
+    @media (prefers-reduced-motion: reduce) { :is(.weather-art, .window-foreground) * { animation: none !important; } }
 
     a { position: relative; isolation: isolate; }
     a:not(.button)::before { content: ""; position: absolute; z-index: -1; pointer-events: none; inset: -4px -6px; border-radius: 48% 52% 44% 56%; background: var(--accent-soft); transform: scale(0); transition: transform 850ms cubic-bezier(.2,1.5,.4,1); }
@@ -226,7 +238,7 @@
         <aside class="weather-window" id="weather-window" aria-label="Singapore weather forecast">
           <div class="weather-panel">
             <div class="weather-scene" id="weather-scene" data-cat="black">
-              <svg class="weather-art" viewBox="0 0 300 180" fill="none" aria-hidden="true" focusable="false">
+              <svg class="weather-art" viewBox="0 0 300 180" preserveAspectRatio="xMidYMax slice" fill="none" aria-hidden="true" focusable="false">
                 <g class="sky-sun"><circle cx="196" cy="53" r="25" fill="#f8cb68"/><g stroke="#f8cb68" stroke-width="3" stroke-linecap="round"><path d="M196 16v-6m0 86v-6m37-37h6m-86 0h6m63-26 4-4m-61 61 4-4m53 0 4 4m-61-61 4 4"/></g><circle cx="189" cy="52" r="1.7" fill="#72543d"/><circle cx="203" cy="52" r="1.7" fill="#72543d"/><path d="M191 60q5 5 10 0" stroke="#72543d" stroke-width="1.8" stroke-linecap="round"/></g>
                 <g class="sky-moon"><path d="M206 26a26 26 0 1 0 16 43 27 27 0 0 1-16-43Z" fill="#fff0b9"/><path d="m156 33 2-5 2 5 5 2-5 2-2 5-2-5-5-2Zm84 65 2-5 2 5 5 2-5 2-2 5-2-5-5-2Z" fill="#fff0b9"/></g>
                 <g class="sky-cloud cloud-back"><path d="M63 81a15 15 0 0 1 13-15 22 22 0 0 1 43-1 16 16 0 0 1 6 31H76a15 15 0 0 1-13-15Z" fill="#fff" opacity=".6"/></g>
@@ -237,23 +249,28 @@
                 <g class="sky-wind" stroke="#a0b1bb" stroke-width="2" stroke-linecap="round"><path d="M68 130h32q12 0 10-8m-30 20h42m52 10h43q12 0 10-8"/></g>
                 <g class="sky-haze" stroke="#d5c8b7" stroke-width="7" stroke-linecap="round" opacity=".65"><path d="M60 129h179M78 143h151M64 157h173"/></g>
                 <g class="sky-hills"><path d="M0 174q55-35 111 0t110 0 79 0v26H0Z" fill="var(--sage-light)"/><path d="M0 186q80-31 161-5t139-2v21H0Z" fill="var(--sage)"/></g>
+                <g class="window-inner-frame">
+                  <rect x="1" y="1" width="298" height="178" rx="3" stroke="#dce7ef" stroke-width="2"/>
+                  <path d="M0 176h300v4H0Z" fill="#dce7ef"/>
+                </g>
+              </svg>
+              <svg class="window-foreground" viewBox="0 0 300 180" preserveAspectRatio="xMidYMax slice" fill="none" aria-hidden="true" focusable="false">
                 <g class="window-curtains">
                   <g class="curtain-left">
-                    <path d="M0 0h43c-1 46-5 92-15 149q-8 6-15 0t-13 0Z" fill="white" fill-opacity=".46"/>
-                    <path d="M10 4q5 66-3 140M24 4q4 65-6 140M37 4q0 62-11 140" stroke="white" stroke-opacity=".45" stroke-width="1.4"/>
+                    <path d="M8 0h43c-1 55-5 112-15 169q-8 7-15 0t-13 0Z" fill="white" fill-opacity=".58"/>
+                    <path d="M18 4q5 80-3 156M32 4q4 78-6 156M45 4q0 76-11 156" stroke="white" stroke-opacity=".45" stroke-width="1.4"/>
                   </g>
                   <g class="curtain-right">
-                    <path d="M300 0h-43c1 46 5 92 15 149q8 6 15 0t13 0Z" fill="white" fill-opacity=".46"/>
-                    <path d="M290 4q-5 66 3 140M276 4q-4 65 6 140M263 4q0 62 11 140" stroke="white" stroke-opacity=".45" stroke-width="1.4"/>
+                    <path d="M292 0h-43c1 55 5 112 15 169q8 7 15 0t13 0Z" fill="white" fill-opacity=".58"/>
+                    <path d="M282 4q-5 80 3 156M268 4q-4 78 6 156M255 4q0 76 11 156" stroke="white" stroke-opacity=".45" stroke-width="1.4"/>
                   </g>
                 </g>
-                <path d="M0 175h300v5H0Z" fill="#a96980"/>
-                <g class="window-plant">
+                <g class="window-plant" transform="translate(0 4)">
                   <path d="M48 158v-24" stroke="var(--sage-deep)" stroke-width="2" stroke-linecap="round"/>
                   <path d="M48 148q-17 0-13-14 14 0 13 14Zm0-9q0-16 12-17 7 12-12 17Z" fill="var(--sage)"/>
-                  <path d="M37 155h24l-4 21H41Z" fill="#cc967e"/>
-                  <rect x="35" y="153" width="28" height="5" rx="2" fill="#ddb09a"/>
-                  <path d="M44 164q5 4 10 0" stroke="#a96f59" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                  <path d="M37 155h24l-4 21H41Z" fill="#cb99a7"/>
+                  <rect x="35" y="153" width="28" height="5" rx="2" fill="#e0b3c2"/>
+                  <path d="M44 164q5 4 10 0" stroke="#a86d84" stroke-width="1.5" fill="none" stroke-linecap="round"/>
                 </g>
                 <g class="window-cat">
                   <path class="cat-tail" d="M235 172C254 177 274 169 271 154c-2-9-12-8-12-1" fill="none" stroke="var(--cat-colour)" stroke-width="8" stroke-linecap="round"/>
@@ -288,30 +305,36 @@
           <article class="project featured">
             <img src="images/tiktok.jpeg" alt="TikTok logo representing the video classification project">
             <div class="project-content">
-              <div class="tags"><span class="tag">Featured project</span><span class="tag">Machine learning</span></div>
               <h3>Classifying TikTok videos</h3>
-              <p>Used statsmodels and scikit-learn to help distinguish claim-based from opinion-based videos for a more focused human-review workflow.</p>
-              <a href="https://github.com/AliaAbdulAziz/TikTokClassification" target="_blank" rel="noopener">View project</a>
+              <p>Classifies TikTok videos as claims or opinions to support a more focused human-review workflow.</p>
+              <div class="project-footer">
+                <div class="tags"><span class="tag">Machine learning</span></div>
+                <a href="https://github.com/AliaAbdulAziz/TikTokClassification" target="_blank" rel="noopener">View project</a>
+              </div>
             </div>
           </article>
 
           <article class="project">
             <img src="images/Singapore-Public-Housing.jpg" alt="High-rise housing buildings representing the data-cleaning project">
             <div class="project-content">
-              <div class="tags"><span class="tag">SQL</span><span class="tag">Data quality</span></div>
               <h3>Cleaning housing data</h3>
               <p>Transformed raw housing records in SQL Server into a more consistent, analysis-ready dataset.</p>
-              <a href="https://github.com/AliaAbdulAziz/Nashville-Housing-SQL" target="_blank" rel="noopener">View project</a>
+              <div class="project-footer">
+                <div class="tags"><span class="tag">SQL</span><span class="tag">Data quality</span></div>
+                <a href="https://github.com/AliaAbdulAziz/Nashville-Housing-SQL" target="_blank" rel="noopener">View project</a>
+              </div>
             </div>
           </article>
 
           <article class="project">
             <img src="images/tableau.png" alt="Tableau logo representing interactive dashboard projects">
             <div class="project-content">
-              <div class="tags"><span class="tag">Tableau</span><span class="tag">Dashboards</span></div>
               <h3>Interactive dashboards</h3>
               <p>A collection of visual tools designed to make performance and trend questions easier to explore.</p>
-              <a href="https://public.tableau.com/app/profile/hungry.alia/vizzes" target="_blank" rel="noopener">Explore dashboards</a>
+              <div class="project-footer">
+                <div class="tags"><span class="tag">Tableau</span><span class="tag">Dashboards</span></div>
+                <a href="https://public.tableau.com/app/profile/hungry.alia/vizzes" target="_blank" rel="noopener">Explore</a>
+              </div>
             </div>
           </article>
         </div>
@@ -319,28 +342,36 @@
           <summary><strong>Other projects</strong></summary>
           <div class="other-grid">
             <article>
-              <div class="tags"><span class="tag">Python</span><span class="tag">Exploratory analysis</span></div>
               <h3>Movie data exploration</h3>
               <p>I explored relationships between movie budgets, gross earnings, and genres using pandas, seaborn, and Matplotlib.</p>
-              <a href="https://github.com/aliaabdulaziz/Movie-EDA" target="_blank" rel="noopener">Read the analysis on GitHub</a>
+              <div class="project-footer">
+                <div class="tags"><span class="tag">Python</span><span class="tag">Exploratory analysis</span></div>
+                <a href="https://github.com/aliaabdulaziz/Movie-EDA" target="_blank" rel="noopener">View project</a>
+              </div>
             </article>
             <article>
-              <div class="tags"><span class="tag">Excel</span><span class="tag">Dashboarding</span></div>
               <h3>Bike sales dashboard</h3>
               <p>I prepared customer data, created age brackets and pivot tables, and built an interactive dashboard to explore bike-sales patterns.</p>
-              <a href="https://onedrive.live.com/embed?resid=50F3C3FDEAC02B4F%21473&amp;authkey=%21ANTTs7Lu6NZ6WEM&amp;em=2&amp;wdHideGridlines=True" target="_blank" rel="noopener">Open the interactive workbook</a>
+              <div class="project-footer">
+                <div class="tags"><span class="tag">Excel</span><span class="tag">Dashboarding</span></div>
+                <a href="https://onedrive.live.com/embed?resid=50F3C3FDEAC02B4F%21473&amp;authkey=%21ANTTs7Lu6NZ6WEM&amp;em=2&amp;wdHideGridlines=True" target="_blank" rel="noopener">Explore</a>
+              </div>
             </article>
             <article>
-              <div class="tags"><span class="tag">SQL</span><span class="tag">Exploratory analysis</span></div>
               <h3>COVID-19 data exploration</h3>
               <p>I used SQL Server joins, aggregations, and window functions to explore historical cases, deaths, and vaccination data.</p>
-              <a href="https://github.com/aliaabdulaziz/covid-project" target="_blank" rel="noopener">Read the SQL project on GitHub</a>
+              <div class="project-footer">
+                <div class="tags"><span class="tag">SQL</span><span class="tag">Exploratory analysis</span></div>
+                <a href="https://github.com/aliaabdulaziz/covid-project" target="_blank" rel="noopener">View project</a>
+              </div>
             </article>
             <article>
-              <div class="tags"><span class="tag">Python</span><span class="tag">Web scraping</span></div>
               <h3>TCD product scraper</h3>
               <p>I used requests and BeautifulSoup to collect a product’s name, price, and review count into dated CSV records.</p>
-              <a href="https://github.com/aliaabdulaziz/TCD-Web-Scraping" target="_blank" rel="noopener">Read the scraper project on GitHub</a>
+              <div class="project-footer">
+                <div class="tags"><span class="tag">Python</span><span class="tag">Web scraping</span></div>
+                <a href="https://github.com/aliaabdulaziz/TCD-Web-Scraping" target="_blank" rel="noopener">View project</a>
+              </div>
             </article>
           </div>
         </details>
@@ -355,17 +386,26 @@
           <p>I also contributed to communicating research findings through a workshop with the University of Oxford and Malaysia’s Ministry of Health. The publications below are collaborative studies that I co-authored.</p>
         </div>
         <ul class="publications">
-          <li>
-            <a href="https://doi.org/10.1016/j.diabres.2023.110944" target="_blank" rel="noopener">Trends in all-cause mortality among adults with diagnosed type 2 diabetes in West Malaysia: 2010–2019</a>
-            <span class="publication-meta">Diabetes Research and Clinical Practice · 2023</span>
+          <li class="publication-card">
+            <article aria-labelledby="publication-1-title">
+              <h3 id="publication-1-title">Trends in all-cause mortality among adults with diagnosed type 2 diabetes in West Malaysia: 2010–2019</h3>
+              <p class="publication-meta">Diabetes Research and Clinical Practice · 2023</p>
+              <a href="https://doi.org/10.1016/j.diabres.2023.110944" target="_blank" rel="noopener" aria-labelledby="publication-1-link publication-1-title"><span id="publication-1-link">Read paper</span></a>
+            </article>
           </li>
-          <li>
-            <a href="https://doi.org/10.1016/j.socscimed.2023.116426" target="_blank" rel="noopener">Health poverty among people with type 2 diabetes mellitus (T2DM) in Malaysia</a>
-            <span class="publication-meta">Social Science &amp; Medicine · 2024</span>
+          <li class="publication-card">
+            <article aria-labelledby="publication-2-title">
+              <h3 id="publication-2-title">Health poverty among people with type 2 diabetes mellitus (T2DM) in Malaysia</h3>
+              <p class="publication-meta">Social Science &amp; Medicine · 2024</p>
+              <a href="https://doi.org/10.1016/j.socscimed.2023.116426" target="_blank" rel="noopener" aria-labelledby="publication-2-link publication-2-title"><span id="publication-2-link">Read paper</span></a>
+            </article>
           </li>
-          <li>
-            <a href="https://doi.org/10.1111/1753-0407.13346" target="_blank" rel="noopener">Effects of mobile health interventions on health-related outcomes in older adults with type 2 diabetes: A systematic review and meta-analysis</a>
-            <span class="publication-meta">Journal of Diabetes · 2023</span>
+          <li class="publication-card">
+            <article aria-labelledby="publication-3-title">
+              <h3 id="publication-3-title">Effects of mobile health interventions on health-related outcomes in older adults with type 2 diabetes: A systematic review and meta-analysis</h3>
+              <p class="publication-meta">Journal of Diabetes · 2023</p>
+              <a href="https://doi.org/10.1111/1753-0407.13346" target="_blank" rel="noopener" aria-labelledby="publication-3-link publication-3-title"><span id="publication-3-link">Read paper</span></a>
+            </article>
           </li>
         </ul>
       </section>
