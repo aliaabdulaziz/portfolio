@@ -154,6 +154,13 @@
     #research .section-heading { margin-bottom: 8px; }
     #research .research-intro > p:first-child { margin-top: 0; }
 
+    .link-sparkle { position: fixed; z-index: 200; width: 9px; height: 9px; background: #cf7698; pointer-events: none; clip-path: polygon(50% 0, 61% 38%, 100% 50%, 61% 62%, 50% 100%, 39% 62%, 0 50%, 39% 38%); animation: link-glint 600ms ease-out forwards; }
+    @keyframes link-glint {
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(.25) rotate(0deg); }
+      25% { opacity: .9; }
+      100% { opacity: 0; transform: translate(calc(-50% + var(--drift-x)), calc(-50% + var(--drift-y))) scale(.1) rotate(60deg); }
+    }
+    @media (prefers-reduced-motion: reduce) { .link-sparkle { display: none; animation: none; } }
   </style>
 </head>
 <body>
@@ -340,6 +347,30 @@
   </div>
 
 <script>
+(() => {
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const hover = window.matchMedia('(hover: hover) and (pointer: fine)');
+  document.querySelectorAll('a[href]').forEach(link => {
+    link.addEventListener('pointerenter', event => {
+      if (motion.matches || !hover.matches || event.pointerType === 'touch') return;
+      const bounds = link.getBoundingClientRect();
+      const x = Math.min(Math.max(event.clientX, bounds.left), bounds.right);
+      const y = Math.min(Math.max(event.clientY, bounds.top), bounds.bottom);
+      [[-8, -6], [7, -10], [11, 3]].forEach(([dx, dy], index) => {
+        const glint = document.createElement('span');
+        glint.className = 'link-sparkle';
+        glint.setAttribute('aria-hidden', 'true');
+        glint.style.left = (x + dx) + 'px';
+        glint.style.top = (y + dy) + 'px';
+        glint.style.width = glint.style.height = (index === 1 ? 9 : 6) + 'px';
+        glint.style.setProperty('--drift-x', dx + 'px');
+        glint.style.setProperty('--drift-y', (dy - 8) + 'px');
+        document.body.appendChild(glint);
+        setTimeout(() => glint.remove(), 650);
+      });
+    });
+  });
+})();
 (() => {
   const heading = document.querySelector('.typed-intro');
   if (!heading || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
