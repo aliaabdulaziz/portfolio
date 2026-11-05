@@ -18,12 +18,14 @@
   <meta name="twitter:description" content="Data Analyst based in Singapore. My work spans industry and healthcare research, turning complex data into clear insights and practical tools.">
   <meta name="twitter:image" content="https://aliaaziz.work/images/social-preview.png">
   <meta name="twitter:image:alt" content="Hi, I’m Alia. Data Analyst in Singapore. Take a look around. aliaaziz.work">
+  <link rel="icon" type="image/svg+xml" sizes="any" href="/favicon.svg">
   <link rel="canonical" href="https://aliaaziz.work/">
   <style>
     :root { --page: #fffdf9; --ink: #17212b; --muted: #5d6873; --line: #dde3e8; --surface: #f7f9fa; --accent: #a83e65; --accent-soft: #fff2f6; --accent-line: #eed0dc; --sill: #a96980; --butter: #fff3c4; --butter-soft: #fff9e7; --sage: #8fa58b; --sage-light: #b5c4a8; --sage-deep: #70886b; }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { margin: 0; color: var(--ink); background: var(--page); font: 16px/1.6 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    ::selection { background: #f2cddd; color: var(--ink); }
     a { color: inherit; }
     .wrap { width: min(1120px, calc(100% - 40px)); margin: auto; }
     nav { position: sticky; top: 0; z-index: 100; background: var(--page); height: 76px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
@@ -39,11 +41,12 @@
     .hero { display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 56px; align-items: center; padding: 60px 0 52px; }
     .hero-copy { min-width: 0; }
     .research-intro { max-width: 720px; color: var(--muted); }
-    .publications { list-style: none; padding: 0; margin: 32px 0 0; max-width: 850px; display: grid; gap: 16px; }
-    .publication-card { padding: clamp(20px, 3vw, 28px); border: 1px solid var(--line); border-radius: 8px; background: #fff; min-width: 0; }
-    .publication-card h3 { margin: 0 0 10px; font-size: 1.15rem; line-height: 1.45; max-width: 70ch; }
-    .publication-meta { color: var(--muted); font-size: .85rem; margin: 0 0 18px; }
-    .publication-card a { display: inline-block; font-size: .92rem; font-weight: 700; text-underline-offset: 4px; }
+    .publications { list-style: none; padding: 0; margin: 32px 0 0; max-width: 850px; }
+    .publication-row { padding: 24px 0; border-top: 1px solid var(--accent-line); min-width: 0; }
+    .publication-details { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px 24px; }
+    .publication-row h3 { margin: 0 0 10px; font-size: 1.15rem; line-height: 1.45; max-width: 70ch; }
+    .publication-meta { color: var(--muted); font-size: .85rem; margin: 0; }
+    .publication-row a { display: inline-block; font-size: .92rem; font-weight: 700; text-underline-offset: 4px; }
     .eyebrow { color: var(--accent); font-size: .78rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
     h1, h2, h3, p { margin-top: 0; }
     h1 { max-width: 720px; margin: 15px 0 20px; font-size: clamp(2.65rem, 5.5vw, 4.65rem); line-height: 1.02; letter-spacing: -.06em; }
@@ -89,8 +92,8 @@
     .project-footer .tags { margin: 0; gap: 6px; }
     .project-footer .tag { padding: 3px 9px; border-color: #f1dce5; background: #fff2f6; color: #963e5e; font-weight: 500; }
     .project-footer > a { margin-left: auto; padding: 8px 0; text-align: right; }
-    .project-footer > a, .publication-card a { color: var(--accent); }
-    .project-footer > a:is(:hover, :focus-visible), .publication-card a:is(:hover, :focus-visible) { color: #852c4d; }
+    .project-footer > a, .publication-row a { color: var(--accent); }
+    .project-footer > a:is(:hover, :focus-visible), .publication-row a:is(:hover, :focus-visible) { color: #852c4d; }
     .project a { font-size: .92rem; font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 4px; }
     footer { padding: 34px 0 50px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
     @media (max-width: 760px) {
@@ -386,25 +389,31 @@
           <p>I also contributed to communicating research findings through a workshop with the University of Oxford and Malaysia’s Ministry of Health. The publications below are collaborative studies that I co-authored.</p>
         </div>
         <ul class="publications">
-          <li class="publication-card">
+          <li class="publication-row">
             <article aria-labelledby="publication-1-title">
               <h3 id="publication-1-title">Trends in all-cause mortality among adults with diagnosed type 2 diabetes in West Malaysia: 2010–2019</h3>
-              <p class="publication-meta">Diabetes Research and Clinical Practice · 2023</p>
-              <a href="https://doi.org/10.1016/j.diabres.2023.110944" target="_blank" rel="noopener" aria-labelledby="publication-1-link publication-1-title"><span id="publication-1-link">Read paper</span></a>
+              <div class="publication-details">
+                <p class="publication-meta">Diabetes Research and Clinical Practice · 2023</p>
+                <a href="https://doi.org/10.1016/j.diabres.2023.110944" target="_blank" rel="noopener" aria-labelledby="publication-1-link publication-1-title"><span id="publication-1-link">Read paper</span></a>
+              </div>
             </article>
           </li>
-          <li class="publication-card">
+          <li class="publication-row">
             <article aria-labelledby="publication-2-title">
               <h3 id="publication-2-title">Health poverty among people with type 2 diabetes mellitus (T2DM) in Malaysia</h3>
-              <p class="publication-meta">Social Science &amp; Medicine · 2024</p>
-              <a href="https://doi.org/10.1016/j.socscimed.2023.116426" target="_blank" rel="noopener" aria-labelledby="publication-2-link publication-2-title"><span id="publication-2-link">Read paper</span></a>
+              <div class="publication-details">
+                <p class="publication-meta">Social Science &amp; Medicine · 2024</p>
+                <a href="https://doi.org/10.1016/j.socscimed.2023.116426" target="_blank" rel="noopener" aria-labelledby="publication-2-link publication-2-title"><span id="publication-2-link">Read paper</span></a>
+              </div>
             </article>
           </li>
-          <li class="publication-card">
+          <li class="publication-row">
             <article aria-labelledby="publication-3-title">
               <h3 id="publication-3-title">Effects of mobile health interventions on health-related outcomes in older adults with type 2 diabetes: A systematic review and meta-analysis</h3>
-              <p class="publication-meta">Journal of Diabetes · 2023</p>
-              <a href="https://doi.org/10.1111/1753-0407.13346" target="_blank" rel="noopener" aria-labelledby="publication-3-link publication-3-title"><span id="publication-3-link">Read paper</span></a>
+              <div class="publication-details">
+                <p class="publication-meta">Journal of Diabetes · 2023</p>
+                <a href="https://doi.org/10.1111/1753-0407.13346" target="_blank" rel="noopener" aria-labelledby="publication-3-link publication-3-title"><span id="publication-3-link">Read paper</span></a>
+              </div>
             </article>
           </li>
         </ul>
